@@ -1,0 +1,64 @@
+footer {
+	background: #f2de02;
+	width: 100%;
+	box-sizing: border-box;
+	padding: 25px 30px;
+	margin-top: 30px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding-bottom: 0px;
+}
+
+footer .divList {
+	display: flex;
+	flex-direction: column;
+	margin-top: 40px;
+}
+
+footer .divList a {
+	text-decoration: none;
+	color: #000;
+	font-family: gilroyRegular;
+	font-size: 17px;
+}
+
+footer .divRedes {
+	margin-top: 40px;
+	margin-left: 150px;
+}
+
+footer .divRedes .redes {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+footer .divRedes .redes i {
+	font-size: 20px;
+	color: #000;
+	text-align: center;
+	margin: 0px 5px;
+}
+
+footer .divRedes p {
+	font-family: gilroyRegular;
+	font-size: 17px;
+	margin: 7px 0px;
+	text-align: center;
+}
+
+footer .divDerechos {
+	display: flex;
+}
+
+footer .divDerechos p {
+	font-family: gilroyRegular;
+	font-size: 17px;
+	margin-top: 110px;
+}
+
+footer .divDerechos img {
+	width: 170px;
+	height: auto;
+}

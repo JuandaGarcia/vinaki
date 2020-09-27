@@ -1,0 +1,52 @@
+@font-face {
+	font-family: gilroyBold;
+	src: url('/assets/fonts/gilroy-bold.ttf');
+}
+
+@font-face {
+	font-family: gilroyHeavy;
+	src: url('/assets/fonts/gilroy-heavy.ttf');
+}
+
+@font-face {
+	font-family: gilroyLight;
+	src: url('/assets/fonts/gilroy-light.ttf');
+}
+
+@font-face {
+	font-family: gilroyMedium;
+	src: url('/assets/fonts/gilroy-medium.ttf');
+}
+
+@font-face {
+	font-family: gilroyRegular;
+	src: url('/assets/fonts/gilroy-regular.ttf');
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	/* box-sizing: border-box; */
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+*::selection {
+	background-color: #9733ee;
+	color: white;
+}
+
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+::-webkit-scrollbar-track {
+	background: rgb(255, 255, 255);
+}
+
+::-webkit-scrollbar-thumb {
+	background: rgba(0, 0, 0, 0.5);
+}

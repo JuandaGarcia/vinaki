@@ -1,65 +1,181 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Link from 'next/link'
+import Layout from '../src/components/Layout'
+import HeadApp from '../src/components/HeadApp'
+import '../src/styles/pages/Home.css'
 
 export default function Home() {
-  return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
-  )
+	return (
+		<>
+			<HeadApp />
+			<Layout>
+				<div className="sec1">
+					<div className="box-1">
+						<p>UNA</p>
+						<p>HUELLA</p>
+						<p>VERDE</p>
+						<p>EN CADA</p>
+						<p>ESPACIO</p>
+						<p>CONSTRUIDO</p>
+					</div>
+					<div className="box-2">
+						<div className="box-x" />
+						<img src="assets/img/home/foto1.jpg" alt="" />
+						<div className="box-y" />
+					</div>
+				</div>
+				<div className="sec2">
+					<div className="title">
+						<h3>
+							Últimos proyectos{' '}
+							<Link href="/obras">
+								<a>Ver todos</a>
+							</Link>
+						</h3>
+					</div>
+					<div className="proyectos">
+						<div className="caja">
+							<img src="assets/img/home/foto2.png" alt="" />
+							<h2 className="titulo">Nombre del proyecto</h2>
+							<p>Elaborado en:</p>
+							<p>Autores: </p>
+							<p className="text2">
+								Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio
+								inventore non consequuntur delectus porro optio, soluta ratione,
+								perferendis, consectetur ipsum pariatur nobis at odit molestias
+								aliquid, modi ducimus dolorum? Quasi!
+							</p>
+							<Link href="/">
+								<a>Ver proyecto completo</a>
+							</Link>
+						</div>
+						<div className="caja">
+							<img src="assets/img/home/foto3.jpg" alt="" />
+							<h2 className="titulo">Nombre del proyecto</h2>
+							<p>Elaborado en:</p>
+							<p>Autores: </p>
+							<p className="text2">
+								Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio
+								inventore non consequuntur delectus porro optio, soluta ratione,
+								perferendis, consectetur ipsum pariatur nobis at odit molestias
+								aliquid, modi ducimus dolorum? Quasi!
+							</p>
+							<Link href="/">
+								<a>Ver proyecto completo</a>
+							</Link>
+						</div>
+					</div>
+				</div>
+				<div className="sec3">
+					<div className="box-1">
+						<div className="cont">
+							<img src="assets/img/home/recurso1_Mesa_de_rabajo1.png" alt="" />
+						</div>
+						<div className="cont-2">
+							<h2>Lorem ipsum</h2>
+							<p>
+								Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+								Praesentium cupiditate et sapiente, ipsum ratione laudantium
+								ducimus quia aperiam nam qui
+							</p>
+							<p>Lorem ipsum dolor, sit amet consectetur</p>
+						</div>
+					</div>
+					<div className="box-2">
+						<img src="assets/img/home/foto2.png" alt="" id="video" />
+						<img
+							src="assets/img/home/recurso2_Mesadetrabajo1.png"
+							alt=""
+							id="mesa"
+						/>
+					</div>
+				</div>
+				<div className="sec4">
+					<img src="assets/img/home/foto4.jpg" alt="" />
+					<div id="aut">
+						<div className="autores">
+							<h2>Autores</h2>
+							<p>
+								Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+								Tempore sunt sint quaerat. Nesciunt numquam perferendis,
+								praesentium, non nisi velit tenetur.
+							</p>
+							<Link href="/autores">
+								<a>Conocer más</a>
+							</Link>
+						</div>
+					</div>
+				</div>
+				<div className="sec5">
+					<div className="title">
+						<h3>
+							Blog{' '}
+							<Link href="/blog">
+								<a>Ver todos</a>
+							</Link>
+						</h3>
+					</div>
+					<div className="content-blog">
+						<div className="blog">
+							<div className="imagen">
+								<img src="assets/img/home/foto5.jpg" alt="" />
+							</div>
+							<div className="fecha">
+								<p>Fecha de publicacion</p>
+							</div>
+							<div className="texto">
+								<p>
+									Lorem ipsum dolor, sit amet consectetur, adipisicing elit.
+									Ipsum ullam maiores natus quos dicta est, modi, molestias
+									placeat voluptatibus nihil.
+								</p>
+							</div>
+						</div>
+						<div className="blog">
+							<div className="imagen">
+								<img src="assets/img/home/foto6.jpg" alt="" />
+							</div>
+							<div className="fecha">
+								<p>Fecha de publicacion</p>
+							</div>
+							<div className="texto">
+								<p>
+									Lorem ipsum dolor, sit amet consectetur, adipisicing elit.
+									Ipsum ullam maiores natus quos dicta est, modi, molestias
+									placeat voluptatibus nihil.
+								</p>
+							</div>
+						</div>
+						<div className="blog">
+							<div className="imagen">
+								<img src="assets/img/home/foto7.jpg" alt="" />
+							</div>
+							<div className="fecha">
+								<p>Fecha de publicacion</p>
+							</div>
+							<div className="texto">
+								<p>
+									Lorem ipsum dolor, sit amet consectetur, adipisicing elit.
+									Ipsum ullam maiores natus quos dicta est, modi, molestias
+									placeat voluptatibus nihil.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div className="sec6">
+					<h3>Siguenos en Instagram</h3>
+					<p>
+						<i className="fab fa-instagram" /> @vinakiarquitectos
+					</p>
+					<div className="feed">
+						<img src="/assets/img/home/instagram01.png" alt="" />
+						<img src="/assets/img/home/instagram02.png" alt="" />
+						<img src="/assets/img/home/instagram03.png" alt="" />
+						<img src="/assets/img/home/instagram04.png" alt="" />
+						<img src="/assets/img/home/instagram05.png" alt="" />
+					</div>
+				</div>
+			</Layout>
+		</>
+	)
 }

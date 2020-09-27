@@ -1,0 +1,148 @@
+.sec1-contacto {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.sec1-contacto .box-2 {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+}
+
+.sec1-contacto .box-2 img {
+	width: 100%;
+	height: auto;
+}
+
+.sec1-contacto .box-2 .box-x {
+	width: 60px;
+	height: 80px;
+	background-color: #f2de02;
+	position: absolute;
+	left: 14rem;
+	top: 32%;
+}
+
+.sec1-contacto .box-2 h3 {
+	position: absolute;
+	color: #000;
+	font-size: 45px;
+	font-family: gilroyBold;
+	left: 45px;
+	top: 48%;
+}
+
+.sec2-contacto {
+	margin-top: 40px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.sec2-contacto .redes {
+	width: 40%;
+}
+
+.sec2-contacto .redes .txt {
+	width: 100%;
+	box-sizing: border-box;
+	padding-left: 90px;
+}
+
+.sec2-contacto .redes .txt .icon {
+	display: flex;
+	margin-bottom: 5px;
+}
+
+.sec2-contacto .redes .txt .icon a {
+	color: #000;
+	text-decoration: none;
+	font-size: 17px;
+	margin: 0px 3px;
+}
+
+.sec2-contacto .redes .txt p {
+	font-family: gilroyRegular;
+	font-size: 16px;
+	margin: 3px 0px;
+}
+
+.sec2-contacto .redes .img {
+	width: 100%;
+	margin-top: 20px;
+}
+
+.sec2-contacto .redes .img img {
+	width: 30%;
+	height: auto;
+}
+
+.sec2-contacto .formulario {
+	width: 50%;
+	box-sizing: border-box;
+	padding-right: 50px;
+}
+
+.sec2-contacto .formulario .two {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin: 15px 0;
+}
+
+.sec2-contacto .formulario .two input,
+.sec2-contacto .formulario textarea {
+	width: 47%;
+	font-family: gilroyRegular;
+	font-size: 16px;
+	box-sizing: border-box;
+	padding: 4px 0px 0px 10px;
+	color: #000;
+	border: 1px solid #666;
+	outline: 0px;
+	box-shadow: 0px;
+}
+
+.sec2-contacto .formulario .two input:focus,
+.sec2-contacto .formulario textarea:focus {
+	border: 1px solid #666;
+	outline: 0px;
+	box-shadow: 0px;
+}
+
+.sec2-contacto .formulario .two input::placeholder,
+.sec2-contacto .formulario textarea::placeholder {
+	color: #000;
+}
+
+.sec2-contacto .formulario textarea {
+	width: 100%;
+	resize: none;
+	height: 100px;
+}
+
+.sec2-contacto .formulario .boton {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	margin-top: 30px;
+}
+
+.sec2-contacto .formulario .boton button {
+	border: 2px solid #f2de02;
+	font-family: gilroyBold;
+	font-size: 16px;
+	padding: 5px 60px;
+	background: #fff;
+	cursor: pointer;
+	font-weight: bold;
+}
+
+.sec2-contacto .formulario .boton button:hover {
+	transition: all 0.4s;
+	background: #f2de02;
+}
