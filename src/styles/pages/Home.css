@@ -47,10 +47,11 @@
 }
 
 .sec2 {
+	--padding-sec2: 50px;
 	margin-top: 50px;
 	width: 100%;
 	box-sizing: border-box;
-	padding: 0px 50px;
+	padding: 0px var(--padding-sec2);
 	margin-bottom: 50px;
 }
 
@@ -82,6 +83,7 @@
 .sec2 .proyectos .caja img {
 	width: 100%;
 	height: 340px;
+	object-fit: cover;
 }
 
 .sec2 .proyectos .caja .titulo {
@@ -157,7 +159,7 @@
 	width: 90%;
 	height: auto;
 	margin-top: 70px;
-	z-index: 10000;
+	z-index: 500;
 	position: relative;
 }
 
@@ -184,7 +186,7 @@
 	justify-content: flex-end;
 	top: -30rem;
 	position: relative;
-	z-index: 1000;
+	z-index: 500;
 }
 
 .sec4 .autores {
@@ -307,4 +309,24 @@
 .sec6 .feed img {
 	width: 18%;
 	height: auto;
+}
+
+@media screen and (max-width: 1024px) {
+	.sec2 .proyectos {
+		flex-direction: column;
+	}
+	.sec2 .proyectos .caja {
+		width: 100%;
+		margin-bottom: 2em;
+	}
+
+	.sec2 .proyectos .caja img {
+		width: 100vw;
+		position: relative;
+		height: 300px;
+		left: calc(var(--padding-sec2) * -1);
+	}
+	.sec2 .proyectos .caja a {
+		text-align: center;
+	}
 }
