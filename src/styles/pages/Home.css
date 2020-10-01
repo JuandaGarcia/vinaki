@@ -311,7 +311,51 @@
 	height: auto;
 }
 
+.sec1-mobile {
+	width: 100%;
+	height: 50vh;
+	background: url('/assets/img/home/foto1-gray.jpg');
+	background-size: cover;
+	box-sizing: border-box;
+	padding: 2em;
+	padding-right: 0;
+}
+
+.sec1-mobile__container {
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+	background: url('/assets/img/home/foto1.jpg');
+	background-size: cover;
+	background-position: 30%;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	padding: 1em;
+	text-align: right;
+}
+
+.sec1-mobile__container__box {
+	width: 2.5em;
+	height: 2.6em;
+	background: #f2de02;
+	margin-bottom: 0.8em;
+}
+
+.sec1-mobile__container__p {
+	font-family: gilroyBold;
+	font-size: 1.6em;
+	color: white;
+}
+
 @media screen and (max-width: 1024px) {
+	.sec2 {
+		--padding-sec2: 30px;
+		--padding-project: 1em;
+	}
+	.sec2 .proyectos {
+		padding: 0 var(--padding-project);
+	}
 	.sec2 .proyectos {
 		flex-direction: column;
 	}
@@ -324,9 +368,41 @@
 		width: 100vw;
 		position: relative;
 		height: 300px;
-		left: calc(var(--padding-sec2) * -1);
+		left: calc(calc(var(--padding-sec2) + var(--padding-project)) * -1);
 	}
 	.sec2 .proyectos .caja a {
 		text-align: center;
+	}
+	.sec2 .title h3 {
+		font-size: 1.6em;
+	}
+
+	.sec3 {
+		flex-direction: column-reverse;
+	}
+
+	.sec3 .box-1 {
+		width: 100%;
+	}
+	.sec3 .box-2 {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: relative;
+	}
+	.sec3 .box-2 #mesa {
+		width: 100px;
+		height: auto;
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+	.sec3 .box-2 #video {
+		width: 90%;
+		height: auto;
+		margin-top: 0;
+		z-index: 500;
+		position: relative;
 	}
 }

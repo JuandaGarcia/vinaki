@@ -62,3 +62,31 @@ footer .divDerechos img {
 	width: 170px;
 	height: auto;
 }
+
+@media screen and (max-width: 1024px) {
+	footer {
+		flex-direction: column;
+		position: relative;
+		padding: 25px 30px;
+		align-items: center;
+	}
+	footer .divList {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		margin: 0;
+	}
+	footer .divRedes {
+		margin: 0;
+		order: -1;
+	}
+	footer .divDerechos p {
+		margin: 0;
+	}
+	footer .divDerechos img {
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		width: 20vw;
+	}
+}

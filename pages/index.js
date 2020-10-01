@@ -1,28 +1,42 @@
+import { useContext } from 'react'
 import Link from 'next/link'
 import Layout from '../src/components/Layout'
 import HeadApp from '../src/components/HeadApp'
+import { Context } from './_app'
 import '../src/styles/pages/Home.css'
 
 export default function Home() {
+	const { isMobile, clientLoad } = useContext(Context)
 	return (
 		<>
 			<HeadApp />
 			<Layout>
-				<div className="sec1">
-					<div className="box-1">
-						<p>UNA</p>
-						<p>HUELLA</p>
-						<p>VERDE</p>
-						<p>EN CADA</p>
-						<p>ESPACIO</p>
-						<p>CONSTRUIDO</p>
+				{clientLoad && isMobile ? (
+					<div className="sec1-mobile">
+						<div className="sec1-mobile__container">
+							<div className="sec1-mobile__container__box" />
+							<p className="sec1-mobile__container__p">
+								UNA HUELLA VERDE EN CADA ESPACIO CONSTRUIDO
+							</p>
+						</div>
 					</div>
-					<div className="box-2">
-						<div className="box-x" />
-						<img src="assets/img/home/foto1.jpg" alt="" />
-						<div className="box-y" />
+				) : (
+					<div className="sec1">
+						<div className="box-1">
+							<p>UNA</p>
+							<p>HUELLA</p>
+							<p>VERDE</p>
+							<p>EN CADA</p>
+							<p>ESPACIO</p>
+							<p>CONSTRUIDO</p>
+						</div>
+						<div className="box-2">
+							<div className="box-x" />
+							<img src="assets/img/home/foto1.jpg" alt="" />
+							<div className="box-y" />
+						</div>
 					</div>
-				</div>
+				)}
 				<div className="sec2">
 					<div className="title">
 						<h3>
