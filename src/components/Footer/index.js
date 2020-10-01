@@ -1,4 +1,10 @@
 import Link from 'next/link'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+	faFacebookF,
+	faInstagram,
+	faWhatsapp,
+} from '@fortawesome/free-brands-svg-icons'
 import './styles.css'
 
 const Footer = () => {
@@ -23,9 +29,9 @@ const Footer = () => {
 			</div>
 			<div className="divRedes">
 				<div className="redes">
-					<i className="fab fa-instagram" />
-					<i className="fab fa-facebook" />
-					<i className="fab fa-whatsapp" />
+					<FontAwesomeIcon icon={faInstagram} />
+					<FontAwesomeIcon icon={faFacebookF} />
+					<FontAwesomeIcon icon={faWhatsapp} />
 				</div>
 				<p>arte@vinakiarquitectos.com</p>
 				<p>3015376543 - 3606437</p>
