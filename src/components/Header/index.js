@@ -30,13 +30,65 @@ const Header = ({ logoWhite }) => {
 					</a>
 				</Link>
 				<nav className={`nav ${openMenu ? 'active' : ''}`}>
-					<ActiveLink href="/" id="active">
+					<ActiveLink
+						onClick={() => setOpenMenu(!openMenu)}
+						href="/"
+						id="active"
+					>
 						Inicio
 					</ActiveLink>
-					<ActiveLink href="/autores">Autores</ActiveLink>
-					<ActiveLink href="/obras">Obras</ActiveLink>
-					<ActiveLink href="/blog">Blog</ActiveLink>
-					<ActiveLink href="/contacto">Contacto</ActiveLink>
+					<ActiveLink onClick={() => setOpenMenu(!openMenu)} href="/autores">
+						Autores
+					</ActiveLink>
+					<ActiveLink onClick={() => setOpenMenu(!openMenu)} href="/obras">
+						Obras
+					</ActiveLink>
+					<ActiveLink onClick={() => setOpenMenu(!openMenu)} href="/blog">
+						Blog
+					</ActiveLink>
+					<ActiveLink onClick={() => setOpenMenu(!openMenu)} href="/contacto">
+						Contacto
+					</ActiveLink>
+					{clientLoad && isMobile && (
+						<div className="nav__redes">
+							<a
+								className="red"
+								href="http://instagram.com/vinakiarquitectos"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								<img
+									className="nav__redes__icon"
+									src="/assets/icons/instagram.svg"
+									alt="Instagram"
+								/>
+							</a>
+							<a
+								className="red"
+								href="http://instagram.com/vinakiarquitectos"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								<img
+									className="nav__redes__icon"
+									src="/assets/icons/facebook.svg"
+									alt="Facebook"
+								/>
+							</a>
+							<a
+								className="red"
+								href="http://instagram.com/vinakiarquitectos"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								<img
+									className="nav__redes__icon"
+									src="/assets/icons/whatsapp.svg"
+									alt="Whatsapp"
+								/>
+							</a>
+						</div>
+					)}
 				</nav>
 				{clientLoad && isMobile && (
 					<button

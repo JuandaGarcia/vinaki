@@ -50,3 +50,9 @@ a {
 ::-webkit-scrollbar-thumb {
 	background: rgba(0, 0, 0, 0.5);
 }
+
+@media screen and (max-width: 1024px) {
+	body {
+		font-size: 4vw;
+	}
+}

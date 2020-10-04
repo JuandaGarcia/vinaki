@@ -52,7 +52,7 @@ const Autores = () => {
 							<img src="assets/img/autores/foto1.png" alt="" />
 						</div>
 					</div>
-					<div className="sec3-autores">
+					<div className="sec3-autores wrap">
 						<div className="image">
 							<img src="assets/img/autores/foto1.png" alt="" />
 						</div>

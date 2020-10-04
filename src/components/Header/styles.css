@@ -57,6 +57,16 @@
 	margin-right: 80px;
 }
 
+.nav__redes {
+	width: 35%;
+	display: flex;
+	justify-content: space-between;
+}
+
+.nav__redes__icon {
+	height: 0.7em;
+}
+
 @media screen and (max-width: 1024px) {
 	.head .menu .nav {
 		position: fixed;
@@ -85,5 +95,8 @@
 		position: relative;
 		left: 50%;
 		transform: translate(-50%, 0);
+	}
+	.head .menu .nav a.red {
+		margin: 0;
 	}
 }

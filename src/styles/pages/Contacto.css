@@ -141,8 +141,44 @@
 	cursor: pointer;
 	font-weight: bold;
 }
-
+.sec2-contacto .redes {
+	width: 100%;
+	text-align: center;
+}
+.sec2-contacto .redes .txt {
+	padding: 0;
+}
 .sec2-contacto .formulario .boton button:hover {
 	transition: all 0.4s;
 	background: #f2de02;
+}
+
+@media screen and (max-width: 1024px) {
+	.sec2-contacto .formulario {
+		width: 100%;
+		padding: 2em;
+	}
+	.sec2-contacto .formulario .two {
+		flex-wrap: wrap;
+		margin: 0;
+	}
+	.sec2-contacto .formulario .two input {
+		width: 100%;
+		margin-bottom: 1em;
+	}
+	.sec1-contacto .box-2 img {
+		height: 40vh;
+		object-fit: cover;
+		object-position: 20%;
+	}
+	.sec1-contacto .box-2 h3 {
+		top: 30vh;
+		font-size: 2em;
+	}
+	.sec1-contacto .box-2 .box-x {
+		top: 20vh;
+		left: 10em;
+		width: 40px;
+		height: 60px;
+	}
 }

@@ -88,8 +88,10 @@ figure.snip0015 * {
 figure.snip0015 img {
 	opacity: 1;
 	width: 100%;
+	height: 100%;
 	-webkit-transition: opacity 0.35s;
 	transition: opacity 0.35s;
+	object-fit: cover;
 }
 figure.snip0015 figcaption {
 	position: absolute;
@@ -175,4 +177,14 @@ figure.snip0015:hover figcaption::before {
 	opacity: 1;
 	-webkit-transition-delay: 0s;
 	transition-delay: 0s;
+}
+
+@media screen and (max-width: 1024px) {
+	.media {
+		margin: 0;
+		max-width: 100%;
+	}
+	figure.large {
+		height: 290px;
+	}
 }

@@ -100,3 +100,24 @@
 	margin: 0px;
 	padding: 0px;
 }
+
+@media screen and (max-width: 1024px) {
+	.sec2-autores {
+		margin: 0;
+		padding: 1em 2em;
+		max-width: 100%;
+		box-sizing: border-box;
+	}
+	.sec3-autores {
+		flex-wrap: wrap-reverse;
+	}
+	.sec3-autores.wrap {
+		flex-wrap: wrap;
+	}
+	.sec3-autores .text {
+		max-width: 100%;
+	}
+	.sec3-autores .image {
+		max-width: 100%;
+	}
+}

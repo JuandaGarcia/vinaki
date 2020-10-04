@@ -216,6 +216,7 @@
 	font-size: 17px;
 	color: #000;
 	font-weight: bold;
+	text-decoration: underline;
 }
 
 .sec5 {
@@ -352,6 +353,7 @@
 	.sec2 {
 		--padding-sec2: 30px;
 		--padding-project: 1em;
+		overflow: hidden;
 	}
 	.sec2 .proyectos {
 		padding: 0 var(--padding-project);
@@ -362,16 +364,18 @@
 	.sec2 .proyectos .caja {
 		width: 100%;
 		margin-bottom: 2em;
+		display: flex;
+		flex-direction: column;
 	}
 
 	.sec2 .proyectos .caja img {
 		width: 100vw;
 		position: relative;
-		height: 300px;
+		height: 250px;
 		left: calc(calc(var(--padding-sec2) + var(--padding-project)) * -1);
 	}
 	.sec2 .proyectos .caja a {
-		text-align: center;
+		align-self: center;
 	}
 	.sec2 .title h3 {
 		font-size: 1.6em;
@@ -404,5 +408,48 @@
 		margin-top: 0;
 		z-index: 500;
 		position: relative;
+	}
+	.sec4 img {
+		width: 100%;
+	}
+	.sec4 .autores {
+		width: 70%;
+	}
+	.sec3 .box-1 .cont {
+		display: flex;
+		align-items: center;
+	}
+	.sec3 .box-1 .cont-2 h2 {
+		margin: 0;
+	}
+	.sec3 .box-1 .cont-2 p {
+		font-family: gilroyRegular;
+		width: 70%;
+		margin: 0;
+	}
+	#aut {
+		top: -7rem;
+	}
+	.sec3 .box-1 .cont img {
+		width: 80%;
+		height: 200px;
+	}
+	.sec5 .content-blog {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-column-gap: 1em;
+		grid-row-gap: 2em;
+	}
+	.sec5 .content-blog .blog {
+		width: 100%;
+	}
+	.sec5 .content-blog .blog .texto p {
+		font-size: 0.7em;
+	}
+	.sec6 {
+		margin-top: 3em;
+	}
+	.sec6 h3 {
+		font-size: 1.5em;
 	}
 }
