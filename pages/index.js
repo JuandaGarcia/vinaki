@@ -3,10 +3,12 @@ import Link from 'next/link'
 import Layout from '../src/components/Layout'
 import HeadApp from '../src/components/HeadApp'
 import { Context } from './_app'
+import useHome from '../src/hooks/useHome'
 import '../src/styles/pages/Home.css'
 
-export default function Home() {
+const Home = ({ data, error }) => {
 	const { isMobile, clientLoad } = useContext(Context)
+	const { formatDate } = useHome()
 	return (
 		<>
 			<HeadApp />
@@ -129,51 +131,60 @@ export default function Home() {
 						</h3>
 					</div>
 					<div className="content-blog">
-						<div className="blog">
-							<div className="imagen">
-								<img src="assets/img/home/foto5.jpg" alt="" />
+						{error ? (
+							<div className="blog-error">
+								<p>Ocurrió un error al traer la información del blog</p>
 							</div>
-							<div className="fecha">
-								<p>Fecha de publicacion</p>
-							</div>
-							<div className="texto">
-								<p>
-									Lorem ipsum dolor, sit amet consectetur, adipisicing elit.
-									Ipsum ullam maiores natus quos dicta est, modi, molestias
-									placeat voluptatibus nihil.
-								</p>
-							</div>
-						</div>
-						<div className="blog">
-							<div className="imagen">
-								<img src="assets/img/home/foto6.jpg" alt="" />
-							</div>
-							<div className="fecha">
-								<p>Fecha de publicacion</p>
-							</div>
-							<div className="texto">
-								<p>
-									Lorem ipsum dolor, sit amet consectetur, adipisicing elit.
-									Ipsum ullam maiores natus quos dicta est, modi, molestias
-									placeat voluptatibus nihil.
-								</p>
-							</div>
-						</div>
-						<div className="blog">
-							<div className="imagen">
-								<img src="assets/img/home/foto7.jpg" alt="" />
-							</div>
-							<div className="fecha">
-								<p>Fecha de publicacion</p>
-							</div>
-							<div className="texto">
-								<p>
-									Lorem ipsum dolor, sit amet consectetur, adipisicing elit.
-									Ipsum ullam maiores natus quos dicta est, modi, molestias
-									placeat voluptatibus nihil.
-								</p>
-							</div>
-						</div>
+						) : (
+							<>
+								{data.map((post, index) => {
+									if (clientLoad && !isMobile && index === 3) {
+										return null
+									}
+									return (
+										<Link
+											key={post.id}
+											href={'/blog/[id]'}
+											as={`/blog/${post.slug}`}
+										>
+											<a>
+												<div className="blog">
+													<div className="imagen">
+														{post._embedded['wp:featuredmedia'] ? (
+															<img
+																className="blog__image"
+																src={
+																	post._embedded['wp:featuredmedia'][0]
+																		.source_url
+																}
+																alt={post.title.rendered}
+															/>
+														) : (
+															<img
+																className="blog__image"
+																src="/assets/img/global/not-found.jpg"
+																alt="Blog"
+															/>
+														)}
+													</div>
+													<div className="fecha">
+														<p>{formatDate(post.date)}</p>
+													</div>
+													<div className="texto">
+														<p>
+															Lorem ipsum dolor, sit amet consectetur,
+															adipisicing elit. Ipsum ullam maiores natus quos
+															dicta est, modi, molestias placeat voluptatibus
+															nihil.
+														</p>
+													</div>
+												</div>
+											</a>
+										</Link>
+									)
+								})}
+							</>
+						)}
 					</div>
 				</div>
 				<div className="sec6">
@@ -193,3 +204,24 @@ export default function Home() {
 		</>
 	)
 }
+
+export async function getStaticProps() {
+	try {
+		const res = await fetch(
+			`${process.env.API_URL}/wp-json/wp/v2/posts?per_page=4&_embed`
+		)
+		const data = await res.json()
+		if (data.code === 'rest_no_route') {
+			throw new Error({ error: '404' })
+		}
+		return {
+			props: { data },
+		}
+	} catch (error) {
+		return {
+			props: { error: 404 },
+		}
+	}
+}
+
+export default Home

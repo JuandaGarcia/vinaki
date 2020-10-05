@@ -38,7 +38,7 @@ const Footer = () => {
 			</div>
 			<div className="divDerechos">
 				<p>2020, Desarrollado por 99andpartners</p>
-				<img src="assets/img/footer/v.png" alt="" />
+				<img src="/assets/img/footer/v.png" alt="Vinaki" />
 			</div>
 		</footer>
 	)

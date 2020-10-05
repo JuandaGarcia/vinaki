@@ -24,7 +24,7 @@ const Header = ({ logoWhite }) => {
 				<Link href="/">
 					<a className="logo">
 						<img
-							src={`assets/img/menu/logo0${logoWhite ? 1 : 2}.png`}
+							src={`/assets/img/menu/logo0${logoWhite ? 1 : 2}.png`}
 							alt="Logo"
 						/>
 					</a>

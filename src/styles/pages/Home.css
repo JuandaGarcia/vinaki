@@ -252,12 +252,12 @@
 
 .sec5 .content-blog .blog .imagen {
 	width: 100%;
-	height: auto;
 }
 
 .sec5 .content-blog .blog .imagen img {
 	width: 100%;
-	height: auto;
+	height: 50vh;
+	object-fit: cover;
 }
 
 .sec5 .content-blog .blog .fecha {
@@ -347,6 +347,14 @@
 	font-family: gilroyBold;
 	font-size: 1.6em;
 	color: white;
+}
+
+.blog-error {
+	width: 100%;
+	color: rgb(255, 91, 91);
+	font-family: gilroyBold;
+	text-align: center;
+	grid-column: span 2;
 }
 
 @media screen and (max-width: 1024px) {
@@ -451,5 +459,8 @@
 	}
 	.sec6 h3 {
 		font-size: 1.5em;
+	}
+	.sec5 .content-blog .blog .imagen img {
+		height: 30vh;
 	}
 }
