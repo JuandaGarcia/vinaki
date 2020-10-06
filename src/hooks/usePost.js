@@ -1,6 +1,6 @@
 import React from 'react'
 
-const useHome = () => {
+const usePost = () => {
 	const formatDate = (dateString) => {
 		const date = new Date(dateString)
 		const month = [
@@ -23,4 +23,4 @@ const useHome = () => {
 	return { formatDate }
 }
 
-export default useHome
+export default usePost

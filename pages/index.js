@@ -3,12 +3,12 @@ import Link from 'next/link'
 import Layout from '../src/components/Layout'
 import HeadApp from '../src/components/HeadApp'
 import { Context } from './_app'
-import useHome from '../src/hooks/useHome'
+import usePost from '../src/hooks/usePost'
 import '../src/styles/pages/Home.css'
 
 const Home = ({ data, error }) => {
 	const { isMobile, clientLoad } = useContext(Context)
-	const { formatDate } = useHome()
+	const { formatDate } = usePost()
 	return (
 		<>
 			<HeadApp />
@@ -144,8 +144,8 @@ const Home = ({ data, error }) => {
 									return (
 										<Link
 											key={post.id}
-											href={'/blog/[id]'}
-											as={`/blog/${post.slug}`}
+											href={'/blog/post/[id]'}
+											as={`/blog/post/${post.slug}`}
 										>
 											<a>
 												<div className="blog">
@@ -210,6 +210,7 @@ export async function getStaticProps() {
 		const res = await fetch(
 			`${process.env.API_URL}/wp-json/wp/v2/posts?per_page=4&_embed`
 		)
+		console.log(res)
 		const data = await res.json()
 		if (data.code === 'rest_no_route') {
 			throw new Error({ error: '404' })
@@ -217,7 +218,7 @@ export async function getStaticProps() {
 		return {
 			props: { data },
 		}
-	} catch (error) {
+	} catch {
 		return {
 			props: { error: 404 },
 		}

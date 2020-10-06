@@ -246,8 +246,12 @@
 	justify-content: space-between;
 }
 
-.sec5 .content-blog .blog {
+.sec5 .content-blog a {
 	width: 28%;
+}
+
+.sec5 .content-blog .blog {
+	width: 100%;
 }
 
 .sec5 .content-blog .blog .imagen {
@@ -462,5 +466,8 @@
 	}
 	.sec5 .content-blog .blog .imagen img {
 		height: 30vh;
+	}
+	.sec5 .content-blog a {
+		width: 100%;
 	}
 }

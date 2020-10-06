@@ -43,7 +43,7 @@ const Header = ({ logoWhite }) => {
 					<ActiveLink onClick={() => setOpenMenu(!openMenu)} href="/obras">
 						Obras
 					</ActiveLink>
-					<ActiveLink onClick={() => setOpenMenu(!openMenu)} href="/blog">
+					<ActiveLink onClick={() => setOpenMenu(!openMenu)} href="/blog/1">
 						Blog
 					</ActiveLink>
 					<ActiveLink onClick={() => setOpenMenu(!openMenu)} href="/contacto">
