@@ -1,14 +1,35 @@
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import Link from 'next/link'
 import Layout from '../src/components/Layout'
+import PostListItem from '../src/components/PostListItem'
 import HeadApp from '../src/components/HeadApp'
 import { Context } from './_app'
 import usePost from '../src/hooks/usePost'
 import '../src/styles/pages/Home.css'
 
-const Home = ({ data, error }) => {
+const Home = ({ url }) => {
 	const { isMobile, clientLoad } = useContext(Context)
-	const { formatDate } = usePost()
+	const [dataPosts, setDataPost] = useState([])
+	const [loading, setLoading] = useState(true)
+	const [errorPosts, setErrorPosts] = useState(null)
+
+	useEffect(() => {
+		;(async () => {
+			try {
+				const res = await fetch(`${url}/wp-json/wp/v2/posts?per_page=4&_embed`)
+				const data = await res.json()
+				if (data.code === 'rest_no_route') {
+					throw new Error({ error: '404' })
+				}
+				setDataPost(data)
+				setLoading(false)
+			} catch (error) {
+				setErrorPosts(error)
+				setLoading(false)
+			}
+		})()
+	}, [])
+
 	return (
 		<>
 			<HeadApp />
@@ -43,7 +64,7 @@ const Home = ({ data, error }) => {
 					<div className="title">
 						<h3>
 							Últimos proyectos{' '}
-							<Link href="/obras">
+							<Link href="/obras/1">
 								<a>Ver todos</a>
 							</Link>
 						</h3>
@@ -131,58 +152,26 @@ const Home = ({ data, error }) => {
 						</h3>
 					</div>
 					<div className="content-blog">
-						{error ? (
-							<div className="blog-error">
-								<p>Ocurrió un error al traer la información del blog</p>
+						{loading ? (
+							<div className="content-blog__loading">
+								Cargando datos del blog ...
 							</div>
 						) : (
 							<>
-								{data.map((post, index) => {
-									if (clientLoad && !isMobile && index === 3) {
-										return null
-									}
-									return (
-										<Link
-											key={post.id}
-											href={'/blog/post/[id]'}
-											as={`/blog/post/${post.slug}`}
-										>
-											<a>
-												<div className="blog">
-													<div className="imagen">
-														{post._embedded['wp:featuredmedia'] ? (
-															<img
-																className="blog__image"
-																src={
-																	post._embedded['wp:featuredmedia'][0]
-																		.source_url
-																}
-																alt={post.title.rendered}
-															/>
-														) : (
-															<img
-																className="blog__image"
-																src="/assets/img/global/not-found.jpg"
-																alt="Blog"
-															/>
-														)}
-													</div>
-													<div className="fecha">
-														<p>{formatDate(post.date)}</p>
-													</div>
-													<div className="texto">
-														<p>
-															Lorem ipsum dolor, sit amet consectetur,
-															adipisicing elit. Ipsum ullam maiores natus quos
-															dicta est, modi, molestias placeat voluptatibus
-															nihil.
-														</p>
-													</div>
-												</div>
-											</a>
-										</Link>
-									)
-								})}
+								{errorPosts ? (
+									<div className="blog-error">
+										<p>Ocurrió un error al traer la información del blog</p>
+									</div>
+								) : (
+									<>
+										{dataPosts.map((post, index) => {
+											if (clientLoad && !isMobile && index === 3) {
+												return null
+											}
+											return <PostListItem key={post.id} post={post} />
+										})}
+									</>
+								)}
 							</>
 						)}
 					</div>
@@ -206,22 +195,8 @@ const Home = ({ data, error }) => {
 }
 
 export async function getStaticProps() {
-	try {
-		const res = await fetch(
-			`${process.env.API_URL}/wp-json/wp/v2/posts?per_page=4&_embed`
-		)
-		console.log(res)
-		const data = await res.json()
-		if (data.code === 'rest_no_route') {
-			throw new Error({ error: '404' })
-		}
-		return {
-			props: { data },
-		}
-	} catch {
-		return {
-			props: { error: 404 },
-		}
+	return {
+		props: { url: process.env.API_URL },
 	}
 }
 

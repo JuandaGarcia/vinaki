@@ -7,6 +7,11 @@ module.exports = withCSS({
 				destination: '/blog/1',
 				permanent: true,
 			},
+			{
+				source: '/obras',
+				destination: '/obras/1',
+				permanent: true,
+			},
 		]
 	},
 })

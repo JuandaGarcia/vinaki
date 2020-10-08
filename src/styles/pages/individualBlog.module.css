@@ -1,4 +1,4 @@
-.inividualBlog {
+.individualBlog {
 	box-sizing: border-box;
 	width: 100%;
 	min-height: 100vh;
@@ -16,18 +16,18 @@
 	margin: 0 auto;
 }
 
-.inividualBlog * {
+.individualBlog * {
 	box-sizing: border-box;
 	font-family: gilroyRegular;
 }
 
-.inividualBlog__title {
+.individualBlog__title {
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;
 }
 
-.inividualBlog__title__h1 {
+.individualBlog__title__h1 {
 	background: url('/assets/img/blog/title-figure.png');
 	background-position: 0 0;
 	background-size: 2.5em;
@@ -39,18 +39,18 @@
 	left: -0.7em;
 }
 
-.inividualBlog__img {
+.individualBlog__img {
 	grid-area: img;
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
 }
 
-.inividualBlog__text img {
+.individualBlog__text img {
 	display: none;
 }
 
-.inividualBlog__text {
+.individualBlog__text {
 	grid-area: text;
 	-webkit-column-width: 50%;
 	-moz-column-width: 50%;
@@ -61,7 +61,7 @@
 	column-gap: 10%;
 }
 
-.inividualBlog__error {
+.individualBlog__error {
 	text-align: center;
 
 	font-family: gilroyRegular;
@@ -72,13 +72,13 @@
 	align-items: center;
 }
 
-.inividualBlog__error__p {
+.individualBlog__error__p {
 	font-size: 2em;
 	font-weight: bold;
 	color: rgb(255, 91, 91);
 }
 
-.inividualBlog__404 {
+.individualBlog__404 {
 	text-align: center;
 	font-family: gilroyRegular;
 	min-height: 100vh;
@@ -88,11 +88,69 @@
 	align-items: center;
 }
 
-.inividualBlog__404__title {
+.individualBlog__404__title {
 	font-size: 5em;
 	font-weight: bold;
 }
 
-.inividualBlog__404__link {
+.individualBlog__404__link {
 	text-decoration: underline;
+}
+
+.individualBlog__relacionados {
+	grid-area: blogs;
+}
+
+.individualBlog__title__h3 {
+	font-family: gilroyBold;
+	font-size: 35px;
+	font-weight: bold;
+}
+
+.blog-error {
+	width: 100%;
+	color: rgb(255, 91, 91);
+	font-family: gilroyBold;
+	text-align: center;
+	grid-column: span 2;
+}
+.loadingSection {
+	width: 100%;
+	font-family: gilroyBold;
+	text-align: center;
+	grid-column: span 2;
+}
+
+.individualBlog__relacionados__container {
+	display: flex;
+	justify-content: space-between;
+}
+
+@media screen and (max-width: 1024px) {
+	.individualBlog {
+		box-sizing: border-box;
+		width: 100%;
+		min-height: 100vh;
+		padding: 0;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: 40vh auto auto 1fr;
+		grid-template-areas:
+			'img img'
+			'title title'
+			'text text'
+			'blogs blogs';
+		grid-gap: 1em;
+		grid-row-gap: 2em;
+	}
+	.individualBlog__text {
+		column-count: 1;
+		padding: 0 2em;
+	}
+	.individualBlog__title {
+		padding: 0 2em;
+	}
+	.individualBlog__relacionados {
+		padding: 0 2em;
+	}
 }

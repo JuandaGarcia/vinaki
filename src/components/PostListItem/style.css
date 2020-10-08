@@ -1,0 +1,56 @@
+.blogLink {
+	width: 28%;
+}
+
+.blogLink .blog {
+	width: 100%;
+}
+
+.blogLink .blog .imagen {
+	width: 100%;
+}
+
+.blogLink .blog .imagen img {
+	width: 100%;
+	height: 50vh;
+	object-fit: cover;
+}
+
+.blogLink .blog .fecha {
+	margin-top: 15px;
+}
+
+.blogLink .blog .fecha p {
+	color: #000;
+	font-family: gilroyLight;
+	font-size: 14.5px;
+}
+
+.blogLink .blog .texto {
+	margin-top: 4px;
+}
+
+.blogLink .blog .texto p {
+	color: #000;
+	font-family: gilroyBold;
+	font-size: 15px;
+	line-height: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+	.blogLink {
+		width: 48%;
+	}
+	.blogLink .blog {
+		width: 100%;
+	}
+	.blogLink .blog .texto p {
+		font-size: 0.7em;
+	}
+	.blogLink .blog .imagen img {
+		height: 30vh;
+	}
+	.blogLink a {
+		width: 100%;
+	}
+}

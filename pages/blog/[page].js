@@ -1,19 +1,40 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import Layout from '../../src/components/Layout'
 import HeadApp from '../../src/components/HeadApp'
+import Link from 'next/link'
+import { Context } from '../_app'
 import { useRouter } from 'next/router'
+import PostListItem from '../../src/components/PostListItem'
 import '../../src/styles/pages/Blog.css'
 
-const Blog = () => {
-	const [data, setData] = useState([])
-	const [loading, setLoading] = useState(true)
-	const [error, setError] = useState(null)
+const Blog = ({ url }) => {
 	const { query } = useRouter()
+	const { isMobile, clientLoad } = useContext(Context)
+	const [dataPosts, setDataPost] = useState([])
+	const [loading, setLoading] = useState(true)
+	const [errorPosts, setErrorPosts] = useState(null)
+	const [totalPosts, setTotalPosts] = useState(0)
+	const [totalPages, setTotalPages] = useState(0)
 
 	useEffect(() => {
 		;(async () => {
-			const res = await fetch('')
-			console.log(query.page)
+			try {
+				const res = await fetch(
+					`${url}/wp-json/wp/v2/posts?per_page=5&_embed&page=1asd`
+				)
+				setTotalPosts(res.headers.get('X-WP-Total'))
+				setTotalPages(res.headers.get('X-WP-TotalPages'))
+				const data = await res.json()
+				if (data.code === 'rest_invalid_param') {
+					console.log('entro al error')
+					throw new Error({ error: '400' })
+				}
+				setDataPost(data)
+				setLoading(false)
+			} catch (error) {
+				setErrorPosts(error)
+				setLoading(false)
+			}
 		})()
 	}, [])
 
@@ -31,56 +52,49 @@ const Blog = () => {
 							<img src="/assets/img/obras/recurso1.png" alt="" />
 						</div>
 					</div>
-					<div className="blog">
-						<div className="sec1-blog">
-							<div className="boxlg">
-								<img src="/assets/img/blog/foto1.png" alt="" />
-								<p className="fecha">fecha de publicacion</p>
-								<p className="texto">
-									Lorem ipsum dolor sit amet consect-blogetur adipisicing elit.
-									Maxime ipsam, repellendus ex dolor totam odit.
-								</p>
+					<div className="blogContainer">
+						{loading ? (
+							<div className="content-blog__loading">
+								Cargando datos del blog ...
 							</div>
-							<div className="boxsm">
-								<img src="/assets/img/blog/foto2.png" alt="" />
-								<p className="fecha">fecha de publicacion</p>
-								<p className="texto">
-									Lorem ipsum dolor sit amet consect-blogetur adipisicing elit.
-									Maxime ipsam, repellendus ex dolor totam odit.
-								</p>
-							</div>
-						</div>
-						<div className="sec2-blog">
-							<div className="box">
-								<img src="/assets/img/blog/foto3.png" alt="" />
-								<p className="fecha">fecha de publicacion</p>
-								<p className="texto">
-									Lorem ipsum dolor sit amet consect-blogetur adipisicing elit.
-									Maxime ipsam, repellendus ex dolor totam odit.
-								</p>
-							</div>
-							<div className="box">
-								<img src="/assets/img/blog/foto4.png" alt="" />
-								<p className="fecha">fecha de publicacion</p>
-								<p className="texto">
-									Lorem ipsum dolor sit amet consect-blogetur adipisicing elit.
-									Maxime ipsam, repellendus ex dolor totam odit.
-								</p>
-							</div>
-							<div className="box">
-								<img src="/assets/img/blog/foto5.png" alt="" />
-								<p className="fecha">fecha de publicacion</p>
-								<p className="texto">
-									Lorem ipsum dolor sit amet consect-blogetur adipisicing elit.
-									Maxime ipsam, repellendus ex dolor totam odit.
-								</p>
-							</div>
-						</div>
+						) : (
+							<>
+								{errorPosts ? (
+									<div className="blog-error">
+										<p>Ocurrió un error al traer la información del blog</p>
+									</div>
+								) : (
+									<>
+										{dataPosts.map((post, index) => {
+											return <PostListItem key={post.id} post={post} />
+										})}
+										<div className="blogContainer__buttons">
+											{query.page !== '1' && (
+												<Link href="/blog/3">
+													<a>Anterior</a>
+												</Link>
+											)}
+											<Link href="/blog/2">
+												<a>Siguiente</a>
+											</Link>
+										</div>
+									</>
+								)}
+							</>
+						)}
 					</div>
 				</div>
 			</Layout>
 		</>
 	)
+}
+
+export async function getServerSideProps() {
+	return {
+		props: {
+			url: process.env.API_URL,
+		},
+	}
 }
 
 export default Blog

@@ -17,7 +17,7 @@ const Footer = () => {
 				<Link href="/autores">
 					<a>Autores</a>
 				</Link>
-				<Link href="/obras">
+				<Link href="/obras/1">
 					<a>Obras</a>
 				</Link>
 				<Link href="/blog/1">
