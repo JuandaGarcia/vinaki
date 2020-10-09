@@ -4,7 +4,6 @@ import Layout from '../src/components/Layout'
 import PostListItem from '../src/components/PostListItem'
 import HeadApp from '../src/components/HeadApp'
 import { Context } from './_app'
-import usePost from '../src/hooks/usePost'
 import '../src/styles/pages/Home.css'
 
 const Home = ({ url }) => {
@@ -16,7 +15,9 @@ const Home = ({ url }) => {
 	useEffect(() => {
 		;(async () => {
 			try {
-				const res = await fetch(`${url}/wp-json/wp/v2/posts?per_page=4&_embed`)
+				const res = await fetch(
+					`${url}/wp-json/wp/v2/posts?per_page=4&_embed&categories=2`
+				)
 				const data = await res.json()
 				if (data.code === 'rest_no_route') {
 					throw new Error({ error: '404' })
@@ -146,7 +147,7 @@ const Home = ({ url }) => {
 					<div className="title">
 						<h3>
 							Blog{' '}
-							<Link href="/blog">
+							<Link href="/blog/1">
 								<a>Ver todos</a>
 							</Link>
 						</h3>

@@ -13,21 +13,21 @@ const Blog = ({ url }) => {
 	const [dataPosts, setDataPost] = useState([])
 	const [loading, setLoading] = useState(true)
 	const [errorPosts, setErrorPosts] = useState(null)
-	const [totalPosts, setTotalPosts] = useState(0)
 	const [totalPages, setTotalPages] = useState(0)
 
 	useEffect(() => {
 		;(async () => {
 			try {
 				const res = await fetch(
-					`${url}/wp-json/wp/v2/posts?per_page=5&_embed&page=1asd`
+					`${url}/wp-json/wp/v2/posts?per_page=5&_embed&page=${query.page}&categories=2`
 				)
-				setTotalPosts(res.headers.get('X-WP-Total'))
 				setTotalPages(res.headers.get('X-WP-TotalPages'))
 				const data = await res.json()
-				if (data.code === 'rest_invalid_param') {
-					console.log('entro al error')
-					throw new Error({ error: '400' })
+				if (
+					data.code === 'rest_invalid_param' ||
+					data.code === 'rest_post_invalid_page_number'
+				) {
+					throw new Error(data.code)
 				}
 				setDataPost(data)
 				setLoading(false)
@@ -36,7 +36,7 @@ const Blog = ({ url }) => {
 				setLoading(false)
 			}
 		})()
-	}, [])
+	}, [query.page])
 
 	return (
 		<>
@@ -54,15 +54,31 @@ const Blog = ({ url }) => {
 					</div>
 					<div className="blogContainer">
 						{loading ? (
-							<div className="content-blog__loading">
+							<div className="blogContainer__loading">
 								Cargando datos del blog ...
 							</div>
 						) : (
 							<>
 								{errorPosts ? (
-									<div className="blog-error">
-										<p>Ocurrió un error al traer la información del blog</p>
-									</div>
+									<>
+										{errorPosts.message === 'rest_invalid_param' ||
+										errorPosts.message === 'rest_post_invalid_page_number' ? (
+											<div className="blogContainer__404 blogPage">
+												<p className="blogContainer__404__title">404</p>
+												<p>Página no encontrada</p>
+												<br />
+												<Link href="/">
+													<a className="blogContainer__404__link">
+														Ir al Inicio
+													</a>
+												</Link>
+											</div>
+										) : (
+											<div className="blog-error">
+												<p>Ocurrió un error al traer la información del blog</p>
+											</div>
+										)}
+									</>
 								) : (
 									<>
 										{dataPosts.map((post, index) => {
@@ -70,13 +86,25 @@ const Blog = ({ url }) => {
 										})}
 										<div className="blogContainer__buttons">
 											{query.page !== '1' && (
-												<Link href="/blog/3">
-													<a>Anterior</a>
+												<Link href={`/blog/${parseInt(query.page) - 1}`}>
+													<a
+														className="blogContainer__buttons__button -black"
+														onClick={() => setLoading(true)}
+													>
+														Anterior
+													</a>
 												</Link>
 											)}
-											<Link href="/blog/2">
-												<a>Siguiente</a>
-											</Link>
+											{totalPages !== query.page && (
+												<Link href={`/blog/${parseInt(query.page) + 1}`}>
+													<a
+														className="blogContainer__buttons__button -yellow"
+														onClick={() => setLoading(true)}
+													>
+														Siguiente
+													</a>
+												</Link>
+											)}
 										</div>
 									</>
 								)}

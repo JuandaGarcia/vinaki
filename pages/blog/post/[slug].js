@@ -125,7 +125,7 @@ const Blog = ({ data, error, url }) => {
 export async function getServerSideProps({ params }) {
 	try {
 		const res = await fetch(
-			`${process.env.API_URL}/wp-json/wp/v2/posts?slug=${params.slug}&_embed`
+			`${process.env.API_URL}/wp-json/wp/v2/posts?slug=${params.slug}&_embed&categories=2`
 		)
 		const data = await res.json()
 		console.log(data)
