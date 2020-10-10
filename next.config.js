@@ -14,4 +14,7 @@ module.exports = withCSS({
 			},
 		]
 	},
+	env: {
+		API_URL: 'http://vinaki.juandagarcia.com',
+	},
 })

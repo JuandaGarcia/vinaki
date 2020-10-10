@@ -6,7 +6,7 @@ import HeadApp from '../src/components/HeadApp'
 import { Context } from './_app'
 import '../src/styles/pages/Home.css'
 
-const Home = ({ url }) => {
+const Home = () => {
 	const { isMobile, clientLoad } = useContext(Context)
 	const [dataPosts, setDataPost] = useState([])
 	const [loading, setLoading] = useState(true)
@@ -16,7 +16,7 @@ const Home = ({ url }) => {
 		;(async () => {
 			try {
 				const res = await fetch(
-					`${url}/wp-json/wp/v2/posts?per_page=4&_embed&categories=2`
+					`${process.env.API_URL}/wp-json/wp/v2/posts?per_page=4&_embed&categories=2`
 				)
 				const data = await res.json()
 				if (data.code === 'rest_no_route') {
@@ -193,12 +193,6 @@ const Home = ({ url }) => {
 			</Layout>
 		</>
 	)
-}
-
-export async function getStaticProps() {
-	return {
-		props: { url: process.env.API_URL },
-	}
 }
 
 export default Home

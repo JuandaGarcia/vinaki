@@ -1,9 +1,41 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Layout from '../../src/components/Layout'
 import HeadApp from '../../src/components/HeadApp'
+import Link from 'next/link'
+import { Context } from '../_app'
+import { useRouter } from 'next/router'
 import '../../src/styles/pages/Obras.css'
 
 const obras = () => {
+	const { query } = useRouter()
+	const { isMobile, clientLoad } = useContext(Context)
+	const [dataPosts, setDataPost] = useState([])
+	const [loading, setLoading] = useState(true)
+	const [errorPosts, setErrorPosts] = useState(null)
+	const [totalPages, setTotalPages] = useState(0)
+
+	useEffect(() => {
+		;(async () => {
+			try {
+				const res = await fetch(
+					`${process.env.API_URL}/wp-json/wp/v2/posts?per_page=4&_embed&page=${query.page}&categories=4`
+				)
+				setTotalPages(res.headers.get('X-WP-TotalPages'))
+				const data = await res.json()
+				if (
+					data.code === 'rest_invalid_param' ||
+					data.code === 'rest_post_invalid_page_number'
+				) {
+					throw new Error(data.code)
+				}
+				setDataPost(data)
+				setLoading(false)
+			} catch (error) {
+				setErrorPosts(error)
+				setLoading(false)
+			}
+		})()
+	}, [query.page])
 	return (
 		<>
 			<HeadApp title="Obras" />
@@ -19,38 +51,85 @@ const obras = () => {
 						</div>
 					</div>
 					<div className="media">
-						<figure className="snip0015 large">
-							<img src="/assets/img/obras/foto1.png" alt="sample38" />
-							<figcaption>
-								<h2>Nombre de la obra</h2>
-								<p>Ver más</p>
-								<a href="#" />
-							</figcaption>
-						</figure>
-						<figure className="snip0015">
-							<img src="/assets/img/obras/foto2.png" alt="sample39" />
-							<figcaption>
-								<h2>Nombre de la obra</h2>
-								<p>Ver más</p>
-								<a href="#" />
-							</figcaption>
-						</figure>
-						<figure className="snip0015">
-							<img src="/assets/img/obras/foto3.png" alt="sample40" />
-							<figcaption>
-								<h2>Nombre de la obra</h2>
-								<p>Ver más</p>
-								<a href="#" />
-							</figcaption>
-						</figure>
-						<figure className="snip0015 large2">
-							<img src="/assets/img/obras/foto4.png" alt="sample38" />
-							<figcaption>
-								<h2>Nombre de la obra</h2>
-								<p>Ver más</p>
-								<a href="#" />
-							</figcaption>
-						</figure>
+						{loading ? (
+							<div className="media__loading">Cargando datos ...</div>
+						) : (
+							<>
+								{errorPosts ? (
+									<>
+										{errorPosts.message === 'rest_invalid_param' ||
+										errorPosts.message === 'rest_post_invalid_page_number' ? (
+											<div className="media__404 blogPage">
+												<p className="media__404__title">404</p>
+												<p>Página no encontrada</p>
+												<br />
+												<Link href="/">
+													<a className="media__404__link">Ir al Inicio</a>
+												</Link>
+											</div>
+										) : (
+											<div className="blog-error">
+												<p>Ocurrió un error al traer la información.</p>
+											</div>
+										)}
+									</>
+								) : (
+									<>
+										{dataPosts.map((obra) => {
+											return (
+												<Link key={obra.id} href={`/obras/post/${obra.slug}`}>
+													<figure className="snip0015 large">
+														{obra._embedded['wp:featuredmedia'] ? (
+															<img
+																className="blog__image"
+																src={
+																	obra._embedded['wp:featuredmedia'][0]
+																		.source_url
+																}
+																alt={obra.title.rendered}
+															/>
+														) : (
+															<img
+																className="blog__image"
+																src="/assets/img/global/not-found.jpg"
+																alt="Blog"
+															/>
+														)}
+														<figcaption>
+															<h2>{obra.title.rendered}</h2>
+															<p>Ver más</p>
+															<a href="#" />
+														</figcaption>
+													</figure>
+												</Link>
+											)
+										})}
+									</>
+								)}
+								<div className="media__buttons">
+									{query.page !== '1' && (
+										<Link href={`/obras/${parseInt(query.page) - 1}`}>
+											<a
+												className="media__buttons__button -black"
+												onClick={() => setLoading(true)}
+											>
+												Anterior
+											</a>
+										</Link>
+									)}
+									{totalPages !== query.page && (
+										<Link href={`/obras/${parseInt(query.page) + 1}`}>
+											<a
+												className="media__buttons__button -yellow"
+												onClick={() => setLoading(true)}
+											>
+												Siguiente
+											</a>
+										</Link>
+									)}
+								</div>
+							</>
+						)}
 					</div>
 				</div>
 			</Layout>

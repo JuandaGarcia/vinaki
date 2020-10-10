@@ -1,0 +1,28 @@
+.obraIndividual {
+	min-height: 100vh;
+	width: 100%;
+	max-width: 1440px;
+	margin: 0 auto;
+}
+
+.obraIndividual__obra {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-areas: 'text img';
+	grid-gap: 2em;
+}
+
+.obraIndividual__obra__text {
+	grid-area: text;
+}
+.obraIndividual__obra__imgContainer {
+	grid-area: img;
+}
+.obraIndividual__obra__imgContainer__img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.obraIndividual__obra__text img {
+	display: none;
+}

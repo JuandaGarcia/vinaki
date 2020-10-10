@@ -7,7 +7,7 @@ import PostListItem from '../../../src/components/PostListItem'
 import { Context } from '../../_app'
 import '../../../src/styles/pages/individualBlog.module.css'
 
-const Blog = ({ data, error, url }) => {
+const Blog = ({ data, error }) => {
 	const { formatDate } = usePost()
 	const [dataPosts, setDataPosts] = useState([])
 	const [loading, setLoading] = useState(true)
@@ -16,7 +16,9 @@ const Blog = ({ data, error, url }) => {
 	useEffect(() => {
 		;(async () => {
 			try {
-				const res = await fetch(`${url}/wp-json/wp/v2/posts?per_page=3&_embed`)
+				const res = await fetch(
+					`${process.env.API_URL}/wp-json/wp/v2/posts?per_page=3&_embed&categories=2`
+				)
 				const data = await res.json()
 				setDataPosts(data)
 				setLoading(false)
@@ -128,9 +130,8 @@ export async function getServerSideProps({ params }) {
 			`${process.env.API_URL}/wp-json/wp/v2/posts?slug=${params.slug}&_embed&categories=2`
 		)
 		const data = await res.json()
-		console.log(data)
 		return {
-			props: { data, url: process.env.API_URL },
+			props: { data },
 		}
 	} catch {
 		return {

@@ -7,7 +7,7 @@ import { useRouter } from 'next/router'
 import PostListItem from '../../src/components/PostListItem'
 import '../../src/styles/pages/Blog.css'
 
-const Blog = ({ url }) => {
+const Blog = () => {
 	const { query } = useRouter()
 	const { isMobile, clientLoad } = useContext(Context)
 	const [dataPosts, setDataPost] = useState([])
@@ -19,7 +19,7 @@ const Blog = ({ url }) => {
 		;(async () => {
 			try {
 				const res = await fetch(
-					`${url}/wp-json/wp/v2/posts?per_page=5&_embed&page=${query.page}&categories=2`
+					`${process.env.API_URL}/wp-json/wp/v2/posts?per_page=5&_embed&page=${query.page}&categories=2`
 				)
 				setTotalPages(res.headers.get('X-WP-TotalPages'))
 				const data = await res.json()
@@ -81,7 +81,7 @@ const Blog = ({ url }) => {
 									</>
 								) : (
 									<>
-										{dataPosts.map((post, index) => {
+										{dataPosts.map((post) => {
 											return <PostListItem key={post.id} post={post} />
 										})}
 										<div className="blogContainer__buttons">
@@ -115,14 +115,6 @@ const Blog = ({ url }) => {
 			</Layout>
 		</>
 	)
-}
-
-export async function getServerSideProps() {
-	return {
-		props: {
-			url: process.env.API_URL,
-		},
-	}
 }
 
 export default Blog
