@@ -64,7 +64,7 @@ const Home = () => {
 						</div>
 						<div className="box-2">
 							<div className="box-x" />
-							<img src="assets/img/home/foto1.jpg" alt="" />
+							<img src="/assets/img/home/foto1.jpg" alt="" />
 							<div className="box-y" />
 						</div>
 					</div>
@@ -73,7 +73,7 @@ const Home = () => {
 				<div className="sec3">
 					<div className="box-1">
 						<div className="cont">
-							<img src="assets/img/home/recurso1_Mesa_de_rabajo1.png" alt="" />
+							<img src="/assets/img/home/recurso1_Mesa_de_rabajo1.png" alt="" />
 						</div>
 						<div className="cont-2">
 							<h2>Casa RM</h2>
@@ -100,7 +100,7 @@ const Home = () => {
 							preload="auto"
 						></video>
 						<img
-							src="assets/img/home/recurso2_Mesadetrabajo1.png"
+							src="/assets/img/home/recurso2_Mesadetrabajo1.png"
 							alt=""
 							id="mesa"
 						/>
@@ -116,11 +116,11 @@ const Home = () => {
 						</h3>
 					</div>
 					<img
-						src="/assets/img/autores/autores1.jpg"
+						src="/assets/img/autores/autores1.JPG"
 						alt="Snaider Hoyos Mahecha"
 					/>
 					<img
-						src="/assets/img/autores/autores2.jpg"
+						src="/assets/img/autores/autores2.JPG"
 						alt="Laura Victoria Andrade"
 					/>
 					<div id="aut">
