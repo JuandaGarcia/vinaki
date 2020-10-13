@@ -1,10 +1,4 @@
 import Link from 'next/link'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {
-	faFacebookF,
-	faInstagram,
-	faWhatsapp,
-} from '@fortawesome/free-brands-svg-icons'
 import './styles.css'
 
 const Footer = () => {
@@ -29,11 +23,44 @@ const Footer = () => {
 			</div>
 			<div className="divRedes">
 				<div className="redes">
-					<FontAwesomeIcon icon={faInstagram} />
-					<FontAwesomeIcon icon={faFacebookF} />
-					<FontAwesomeIcon icon={faWhatsapp} />
+					<a
+						href={process.env.INSTAGRAM}
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						<img
+							className="footer__red"
+							src="/assets/icons/instagram.svg"
+							alt="Instagram"
+						/>
+					</a>
+					<a
+						href={process.env.FACEBOOK}
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						<img
+							className="footer__red"
+							src="/assets/icons/facebook.svg"
+							alt="Facebook"
+						/>
+					</a>
+					<a
+						href={process.env.WHATSAPP}
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						<img
+							className="footer__red"
+							src="/assets/icons/whatsapp.svg"
+							alt="Whatsapp"
+						/>
+					</a>
 				</div>
-				<p>arte@vinakiarquitectos.com</p>
+
+				<a className="link__email" href="mailto: arte@vinakiarquitectos.com">
+					arte@vinakiarquitectos.com
+				</a>
 				<p>3015376543 - 3606437</p>
 			</div>
 			<div className="divDerechos">

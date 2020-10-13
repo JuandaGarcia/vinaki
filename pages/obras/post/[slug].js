@@ -1,21 +1,35 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper'
 import Layout from '../../../src/components/Layout'
 import '../../../src/styles/pages/obraInvidual.css'
 
+import 'swiper/swiper.scss'
+import 'swiper/components/navigation/navigation.scss'
+import 'swiper/components/pagination/pagination.scss'
+import 'swiper/components/scrollbar/scrollbar.scss'
+
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y])
+
 const Post = (data, error) => {
+	const [imagesSRC, setImagesSRC] = useState([])
+
 	useEffect(() => {
 		const images = document.querySelectorAll('.wp-block-image')
-
+		let imagesSRCArray = []
 		for (let i = 0; i < images.length; i++) {
 			console.log(images[i].children[0].src)
+			imagesSRCArray.push(images[i].children[0].src)
 		}
+		setImagesSRC(imagesSRCArray)
 	}, [])
+
 	return (
 		<Layout>
 			<main className="obraIndividual">
 				<section className="obraIndividual__obra">
 					<div>
-						<h1></h1>
+						<h1>{data.data[0].title.rendered}</h1>
 						<div
 							className="obraIndividual__obra__text"
 							dangerouslySetInnerHTML={{
@@ -39,7 +53,23 @@ const Post = (data, error) => {
 						)}
 					</picture>
 				</section>
-				<section></section>
+				{imagesSRC.length && (
+					<section className="obraIndividual__slider">
+						<Swiper spaceBetween={50} slidesPerView={3} navigation>
+							{imagesSRC.map((src) => {
+								return (
+									<SwiperSlide>
+										<img
+											className="obraIndividual__slider__img"
+											src={src}
+											alt="Item"
+										/>
+									</SwiperSlide>
+								)
+							})}
+						</Swiper>
+					</section>
+				)}
 			</main>
 		</Layout>
 	)

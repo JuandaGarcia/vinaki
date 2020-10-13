@@ -1,6 +1,9 @@
+import { useContext } from 'react'
+import { Context } from '../../../pages/_app'
 import Head from 'next/head'
 
 const HeadApp = ({ title, metaDescription }) => {
+	const { clientLoad } = useContext(Context)
 	return (
 		<>
 			<Head>
@@ -11,6 +14,11 @@ const HeadApp = ({ title, metaDescription }) => {
 				<link rel="icon" href="/assets/img/menu/logo02.png" />
 				<title>Vinaki{title ? ` - ${title}` : ''}</title>
 				<meta name="description" content={metaDescription} />
+				{clientLoad && window.location.host === process.env.DOMAIN ? (
+					<meta name="robots" content="index,follow" />
+				) : (
+					<meta name="robots" content="noindex,nofollow" />
+				)}
 			</Head>
 		</>
 	)

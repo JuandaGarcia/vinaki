@@ -26,3 +26,13 @@
 .obraIndividual__obra__text img {
 	display: none;
 }
+
+.obraIndividual__slider {
+	width: 100%;
+}
+
+.obraIndividual__slider__img {
+	height: 50vh;
+	width: 100%;
+	object-fit: cover;
+}

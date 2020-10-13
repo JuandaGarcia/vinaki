@@ -9,15 +9,13 @@
 		"debug": "npm --node-options=--inspect=0.0.0.0:9229 run dev"
 	},
 	"dependencies": {
-		"@fortawesome/fontawesome-svg-core": "^1.2.31",
-		"@fortawesome/free-brands-svg-icons": "^5.15.0",
-		"@fortawesome/free-regular-svg-icons": "^5.15.0",
-		"@fortawesome/free-solid-svg-icons": "^5.15.0",
-		"@fortawesome/react-fontawesome": "^0.1.11",
 		"@zeit/next-css": "^1.0.1",
+		"@zeit/next-sass": "^1.0.1",
 		"next": "9.5.3",
+		"node-sass": "^4.14.1",
 		"react": "16.13.1",
 		"react-dom": "16.13.1",
-		"react-responsive": "^8.1.0"
+		"react-responsive": "^8.1.0",
+		"swiper": "^6.3.3"
 	}
 }

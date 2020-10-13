@@ -53,7 +53,7 @@ const Header = ({ logoWhite }) => {
 						<div className="nav__redes">
 							<a
 								className="red"
-								href="http://instagram.com/vinakiarquitectos"
+								href={process.env.INSTAGRAM}
 								target="_blank"
 								rel="noopener noreferrer"
 							>
@@ -65,7 +65,7 @@ const Header = ({ logoWhite }) => {
 							</a>
 							<a
 								className="red"
-								href="http://instagram.com/vinakiarquitectos"
+								href={process.env.FACEBOOK}
 								target="_blank"
 								rel="noopener noreferrer"
 							>
@@ -77,7 +77,7 @@ const Header = ({ logoWhite }) => {
 							</a>
 							<a
 								className="red"
-								href="http://instagram.com/vinakiarquitectos"
+								href={process.env.WHATSAPP}
 								target="_blank"
 								rel="noopener noreferrer"
 							>

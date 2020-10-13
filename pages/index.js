@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react'
 import Link from 'next/link'
 import Layout from '../src/components/Layout'
 import PostListItem from '../src/components/PostListItem'
+import ProjectSection from '../src/components/ProjectSection'
 import HeadApp from '../src/components/HeadApp'
 import { Context } from './_app'
 import '../src/styles/pages/Home.css'
@@ -34,7 +35,7 @@ const Home = () => {
 	return (
 		<>
 			<HeadApp />
-			<Layout>
+			<Layout logoWhite>
 				{clientLoad && isMobile ? (
 					<div className="sec1-mobile">
 						<div className="sec1-mobile__container">
@@ -47,12 +48,19 @@ const Home = () => {
 				) : (
 					<div className="sec1">
 						<div className="box-1">
-							<p>UNA</p>
-							<p>HUELLA</p>
-							<p>VERDE</p>
-							<p>EN CADA</p>
-							<p>ESPACIO</p>
-							<p>CONSTRUIDO</p>
+							<p>
+								UNA
+								<br />
+								HUELLA
+								<br />
+								VERDE
+								<br />
+								EN CADA
+								<br />
+								ESPACIO
+								<br />
+								CONSTRUIDO
+							</p>
 						</div>
 						<div className="box-2">
 							<div className="box-x" />
@@ -61,65 +69,36 @@ const Home = () => {
 						</div>
 					</div>
 				)}
-				<div className="sec2">
-					<div className="title">
-						<h3>
-							Últimos proyectos{' '}
-							<Link href="/obras/1">
-								<a>Ver todos</a>
-							</Link>
-						</h3>
-					</div>
-					<div className="proyectos">
-						<div className="caja">
-							<img src="assets/img/home/foto2.png" alt="" />
-							<h2 className="titulo">Nombre del proyecto</h2>
-							<p>Elaborado en:</p>
-							<p>Autores: </p>
-							<p className="text2">
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio
-								inventore non consequuntur delectus porro optio, soluta ratione,
-								perferendis, consectetur ipsum pariatur nobis at odit molestias
-								aliquid, modi ducimus dolorum? Quasi!
-							</p>
-							<Link href="/">
-								<a>Ver proyecto completo</a>
-							</Link>
-						</div>
-						<div className="caja">
-							<img src="assets/img/home/foto3.jpg" alt="" />
-							<h2 className="titulo">Nombre del proyecto</h2>
-							<p>Elaborado en:</p>
-							<p>Autores: </p>
-							<p className="text2">
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio
-								inventore non consequuntur delectus porro optio, soluta ratione,
-								perferendis, consectetur ipsum pariatur nobis at odit molestias
-								aliquid, modi ducimus dolorum? Quasi!
-							</p>
-							<Link href="/">
-								<a>Ver proyecto completo</a>
-							</Link>
-						</div>
-					</div>
-				</div>
+				<ProjectSection />
 				<div className="sec3">
 					<div className="box-1">
 						<div className="cont">
 							<img src="assets/img/home/recurso1_Mesa_de_rabajo1.png" alt="" />
 						</div>
 						<div className="cont-2">
-							<h2>Lorem ipsum</h2>
+							<h2>Casa RM</h2>
 							<p>
-								Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-								Praesentium cupiditate et sapiente, ipsum ratione laudantium
-								ducimus quia aperiam nam qui
+								Elaborada en: Gigante, Huila <br />
+								Autores: Vinaki Arquitectos <br />
+								Área: 356 m2.
 							</p>
-							<p>Lorem ipsum dolor, sit amet consectetur</p>
+							<p>
+								Vivienda residencial con un diseño contemporáneo donde su
+								altitud, espacios amplios y abiertos, la convierte en una casa
+								perfectamente iluminada con luz natural. Este proyecto tuvo como
+								principal propósito el romper con los esquemas de lo que se
+								conocía en la región, al estar ubicada en el corazón de Gigante
+								Huila.
+							</p>
 						</div>
 					</div>
 					<div className="box-2">
-						<img src="assets/img/home/foto2.png" alt="" id="video" />
+						<video
+							src="/assets/video/video.mp4"
+							id="video"
+							controls
+							preload="auto"
+						></video>
 						<img
 							src="assets/img/home/recurso2_Mesadetrabajo1.png"
 							alt=""
@@ -128,14 +107,30 @@ const Home = () => {
 					</div>
 				</div>
 				<div className="sec4">
-					<img src="assets/img/home/foto4.jpg" alt="" />
+					<div className="title">
+						<h3>
+							Autores{' '}
+							<Link href="/autores">
+								<a>Ver más</a>
+							</Link>
+						</h3>
+					</div>
+					<img
+						src="/assets/img/autores/autores1.jpg"
+						alt="Snaider Hoyos Mahecha"
+					/>
+					<img
+						src="/assets/img/autores/autores2.jpg"
+						alt="Laura Victoria Andrade"
+					/>
 					<div id="aut">
 						<div className="autores">
 							<h2>Autores</h2>
 							<p>
-								Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-								Tempore sunt sint quaerat. Nesciunt numquam perferendis,
-								praesentium, non nisi velit tenetur.
+								Laura Victoria Andrade y Snaider Hoyos Mahecha: arquitectos
+								apasionados y comprometidos en diseñar y construir hogares
+								sostenibles, llenos de elegancia y confort, y siempre, dejando
+								una huella verde en cada una de ellas.
 							</p>
 							<Link href="/autores">
 								<a>Conocer más</a>

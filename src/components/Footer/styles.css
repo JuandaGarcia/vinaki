@@ -41,7 +41,8 @@ footer .divRedes .redes i {
 	margin: 0px 5px;
 }
 
-footer .divRedes p {
+footer .divRedes p,
+.link__email {
 	font-family: gilroyRegular;
 	font-size: 17px;
 	margin: 7px 0px;
@@ -63,7 +64,21 @@ footer .divDerechos img {
 	height: auto;
 }
 
+.footer__red {
+	height: 1em;
+}
+
 @media screen and (max-width: 1024px) {
+	footer .divRedes p,
+	.link__email {
+		font-family: gilroyRegular;
+		font-size: 0.8em;
+		margin: 7px 0px;
+		text-align: center;
+	}
+	.link__email {
+		margin: 0;
+	}
 	footer {
 		flex-direction: column;
 		position: relative;
@@ -75,10 +90,22 @@ footer .divDerechos img {
 		flex-direction: row;
 		justify-content: space-between;
 		margin: 0;
+		width: 100%;
+	}
+	footer .divList a {
+		font-size: 0.8em;
 	}
 	footer .divRedes {
 		margin: 0;
 		order: -1;
+		margin-bottom: 1em;
+	}
+	footer .divRedes .redes {
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
+		padding: 0 25%;
+		box-sizing: border-box;
 	}
 	footer .divDerechos p {
 		margin: 0;
@@ -87,6 +114,10 @@ footer .divDerechos img {
 		position: absolute;
 		bottom: 0;
 		right: 0;
-		width: 20vw;
+		width: 10vw;
+	}
+	footer .divDerechos p {
+		font-size: 0.8em;
+		margin-top: 1em;
 	}
 }
