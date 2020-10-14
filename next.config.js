@@ -20,7 +20,7 @@ module.exports = withCSS(
 			API_URL: 'http://vinaki.juandagarcia.com',
 			INSTAGRAM: 'http://instagram.com/vinakiarquitectos',
 			FACEBOOK: 'http://facebook.com/',
-			WHATSAPP: 'http://instagram.com/',
+			WHATSAPP: 'http://wa.me/573015376543',
 			DOMAIN: 'vinakiarquitectos.com',
 		},
 	})

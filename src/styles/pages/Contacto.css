@@ -41,16 +41,27 @@
 	flex-wrap: wrap;
 	justify-content: space-between;
 	width: 100%;
+	min-height: 45vh;
+	align-items: center;
 }
 
 .sec2-contacto .redes {
 	width: 40%;
+	text-align: center;
+}
+.sec2-contacto .redes .redes {
+	width: 15%;
+	display: flex;
+	justify-content: space-between;
+	text-align: center;
 }
 
 .sec2-contacto .redes .txt {
-	width: 100%;
+	width: 65%;
+	margin: 0 auto;
 	box-sizing: border-box;
 	padding-left: 90px;
+	text-align: left;
 }
 
 .sec2-contacto .redes .txt .icon {
@@ -72,12 +83,12 @@
 }
 
 .sec2-contacto .redes .img {
-	width: 100%;
+	width: 20%;
 	margin-top: 20px;
 }
 
 .sec2-contacto .redes .img img {
-	width: 30%;
+	width: 100%;
 	height: auto;
 }
 
@@ -141,10 +152,7 @@
 	cursor: pointer;
 	font-weight: bold;
 }
-.sec2-contacto .redes {
-	width: 100%;
-	text-align: center;
-}
+
 .sec2-contacto .redes .txt {
 	padding: 0;
 }
@@ -154,6 +162,16 @@
 }
 
 @media screen and (max-width: 1024px) {
+	.sec2-contacto {
+		position: relative;
+	}
+	.sec2-contacto .redes .txt {
+		text-align: center;
+	}
+	.sec2-contacto .redes .redes {
+		width: 30%;
+		margin: 0 auto;
+	}
 	.sec2-contacto .formulario {
 		width: 100%;
 		padding: 2em;
@@ -161,6 +179,12 @@
 	.sec2-contacto .formulario .two {
 		flex-wrap: wrap;
 		margin: 0;
+	}
+	.sec2-contacto .redes .img img {
+		position: absolute;
+		width: 30vw;
+		left: -2em;
+		bottom: -5em;
 	}
 	.sec2-contacto .formulario .two input {
 		width: 100%;
@@ -180,5 +204,9 @@
 		left: 10em;
 		width: 40px;
 		height: 60px;
+	}
+	.sec2-contacto .redes {
+		width: 100%;
+		text-align: center;
 	}
 }

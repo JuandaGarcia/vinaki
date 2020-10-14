@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext } from 'react'
 import Link from 'next/link'
 import Layout from '../src/components/Layout'
 import PostListItem from '../src/components/PostListItem'
@@ -7,35 +7,13 @@ import HeadApp from '../src/components/HeadApp'
 import { Context } from './_app'
 import '../src/styles/pages/Home.css'
 
-const Home = () => {
+const Home = ({ dataPosts, errorPosts, dataObras }) => {
 	const { isMobile, clientLoad } = useContext(Context)
-	const [dataPosts, setDataPost] = useState([])
-	const [loading, setLoading] = useState(true)
-	const [errorPosts, setErrorPosts] = useState(null)
-
-	useEffect(() => {
-		;(async () => {
-			try {
-				const res = await fetch(
-					`${process.env.API_URL}/wp-json/wp/v2/posts?per_page=4&_embed&categories=2`
-				)
-				const data = await res.json()
-				if (data.code === 'rest_no_route') {
-					throw new Error({ error: '404' })
-				}
-				setDataPost(data)
-				setLoading(false)
-			} catch (error) {
-				setErrorPosts(error)
-				setLoading(false)
-			}
-		})()
-	}, [])
 
 	return (
 		<>
 			<HeadApp />
-			<Layout logoWhite>
+			<Layout>
 				{clientLoad && isMobile ? (
 					<div className="sec1-mobile">
 						<div className="sec1-mobile__container">
@@ -69,7 +47,7 @@ const Home = () => {
 						</div>
 					</div>
 				)}
-				<ProjectSection />
+				<ProjectSection dataObras={dataObras} />
 				<div className="sec3">
 					<div className="box-1">
 						<div className="cont">
@@ -77,11 +55,13 @@ const Home = () => {
 						</div>
 						<div className="cont-2">
 							<h2>Casa RM</h2>
+							<br />
 							<p>
 								Elaborada en: Gigante, Huila <br />
 								Autores: Vinaki Arquitectos <br />
 								Área: 356 m2.
 							</p>
+							<br />
 							<p>
 								Vivienda residencial con un diseño contemporáneo donde su
 								altitud, espacios amplios y abiertos, la convierte en una casa
@@ -148,46 +128,81 @@ const Home = () => {
 						</h3>
 					</div>
 					<div className="content-blog">
-						{loading ? (
-							<div className="content-blog__loading">
-								Cargando datos del blog ...
+						{errorPosts ? (
+							<div className="blog-error">
+								<p>Ocurrió un error al traer la información del blog</p>
 							</div>
 						) : (
 							<>
-								{errorPosts ? (
-									<div className="blog-error">
-										<p>Ocurrió un error al traer la información del blog</p>
-									</div>
-								) : (
-									<>
-										{dataPosts.map((post, index) => {
-											if (clientLoad && !isMobile && index === 3) {
-												return null
-											}
-											return <PostListItem key={post.id} post={post} />
-										})}
-									</>
-								)}
+								{dataPosts.map((post, index) => {
+									if (clientLoad && !isMobile && index === 3) {
+										return null
+									}
+									return <PostListItem key={post.id} post={post} />
+								})}
 							</>
 						)}
 					</div>
 				</div>
 				<div className="sec6">
 					<h3>Siguenos en Instagram</h3>
-					<p>
-						<i className="fab fa-instagram" /> @vinakiarquitectos
-					</p>
-					<div className="feed">
-						<img src="/assets/img/home/instagram01.png" alt="" />
-						<img src="/assets/img/home/instagram02.png" alt="" />
-						<img src="/assets/img/home/instagram03.png" alt="" />
-						<img src="/assets/img/home/instagram04.png" alt="" />
-						<img src="/assets/img/home/instagram05.png" alt="" />
+					<a
+						href={process.env.INSTAGRAM}
+						target="_blank"
+						rel="noopener noreferrer"
+						className="instagram__link"
+					>
+						<img
+							className="footer__red"
+							src="/assets/icons/instagram.svg"
+							alt="Instagram"
+						/>
+						<span> @vinakiarquitectos</span>
+					</a>
+					<div>
+						<a
+							href={process.env.INSTAGRAM}
+							target="_blank"
+							rel="noopener noreferrer"
+							className="feed"
+						>
+							<img src="/assets/img/home/instagram01.png" alt="" />
+							<img src="/assets/img/home/instagram02.png" alt="" />
+							<img src="/assets/img/home/instagram03.png" alt="" />
+							<img src="/assets/img/home/instagram04.png" alt="" />
+							<img src="/assets/img/home/instagram05.png" alt="" />
+						</a>
 					</div>
 				</div>
 			</Layout>
 		</>
 	)
+}
+
+export async function getServerSideProps() {
+	try {
+		const res = await fetch(
+			`${process.env.API_URL}/wp-json/wp/v2/posts?per_page=4&_embed&categories=2`
+		)
+		const data = await res.json()
+		if (data.code === 'rest_no_route') {
+			throw new Error({ error: '404' })
+		}
+		const resObras = await fetch(
+			`${process.env.API_URL}/wp-json/wp/v2/posts?per_page=2&_embed&categories=4&orderby=modified`
+		)
+		const dataObras = await resObras.json()
+		if (dataObras.code === 'rest_no_route') {
+			throw new Error({ error: '404' })
+		}
+		return {
+			props: { dataPosts: data, dataObras },
+		}
+	} catch (error) {
+		return {
+			props: { errorPosts: error },
+		}
+	}
 }
 
 export default Home

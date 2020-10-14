@@ -18,7 +18,6 @@ const Post = (data, error) => {
 		const images = document.querySelectorAll('.wp-block-image')
 		let imagesSRCArray = []
 		for (let i = 0; i < images.length; i++) {
-			console.log(images[i].children[0].src)
 			imagesSRCArray.push(images[i].children[0].src)
 		}
 		setImagesSRC(imagesSRCArray)
@@ -58,7 +57,7 @@ const Post = (data, error) => {
 						<Swiper spaceBetween={50} slidesPerView={3} navigation>
 							{imagesSRC.map((src) => {
 								return (
-									<SwiperSlide>
+									<SwiperSlide key={src}>
 										<img
 											className="obraIndividual__slider__img"
 											src={src}

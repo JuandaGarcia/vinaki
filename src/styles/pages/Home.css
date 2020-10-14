@@ -189,7 +189,7 @@
 }
 
 .sec4 img {
-	height: 80vh;
+	height: 75vh;
 	object-fit: cover;
 }
 
@@ -268,6 +268,15 @@
 
 .sec6 {
 	margin-top: 90px;
+	display: flex;
+	flex-direction: column;
+}
+.instagram__link {
+	font-family: gilroyRegular;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 1em 0;
 }
 
 .sec6 h3 {
@@ -387,6 +396,7 @@
 
 	.sec3 .box-1 {
 		width: 100%;
+		margin-top: 2em;
 	}
 	.sec3 .box-2 {
 		width: 100%;
@@ -438,7 +448,7 @@
 	}
 	.sec3 .box-1 .cont-2 p {
 		font-family: gilroyRegular;
-		width: 70%;
+		width: 80%;
 		margin: 0;
 	}
 	.sec6 {

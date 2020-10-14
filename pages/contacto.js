@@ -36,15 +36,39 @@ const Contacto = () => {
 					<div className="sec2-contacto">
 						<div className="redes">
 							<div className="txt">
-								<div className="icon">
-									<a href="#">
-										<i className="fab fa-instagram" />
+								<div className="redes">
+									<a
+										href={process.env.INSTAGRAM}
+										target="_blank"
+										rel="noopener noreferrer"
+									>
+										<img
+											className="footer__red"
+											src="/assets/icons/instagram.svg"
+											alt="Instagram"
+										/>
 									</a>
-									<a href="#">
-										<i className="fab fa-facebook" />
+									<a
+										href={process.env.FACEBOOK}
+										target="_blank"
+										rel="noopener noreferrer"
+									>
+										<img
+											className="footer__red"
+											src="/assets/icons/facebook.svg"
+											alt="Facebook"
+										/>
 									</a>
-									<a href="#">
-										<i className="fab fa-whatsapp" />
+									<a
+										href={process.env.WHATSAPP}
+										target="_blank"
+										rel="noopener noreferrer"
+									>
+										<img
+											className="footer__red"
+											src="/assets/icons/whatsapp.svg"
+											alt="Whatsapp"
+										/>
 									</a>
 								</div>
 								<p>@vinaki.arq</p>
