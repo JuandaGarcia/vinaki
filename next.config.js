@@ -17,7 +17,7 @@ module.exports = withCSS(
 			]
 		},
 		env: {
-			API_URL: 'http://admin.vinakiarquitectos.com/',
+			API_URL: 'https://admin.vinakiarquitectos.com/',
 			INSTAGRAM: 'http://instagram.com/vinakiarquitectos',
 			FACEBOOK: 'http://facebook.com/',
 			WHATSAPP: 'http://wa.me/573015376543',
