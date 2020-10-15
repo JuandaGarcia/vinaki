@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import Link from 'next/link'
 import Layout from '../src/components/Layout'
 import PostListItem from '../src/components/PostListItem'
@@ -7,8 +7,30 @@ import HeadApp from '../src/components/HeadApp'
 import { Context } from './_app'
 import '../src/styles/pages/Home.css'
 
-const Home = ({ dataPosts, errorPosts, dataObras }) => {
+const Home = () => {
 	const { isMobile, clientLoad } = useContext(Context)
+	const [dataPosts, setDataPost] = useState([])
+	const [loading, setLoading] = useState(true)
+	const [errorPosts, setErrorPosts] = useState(null)
+
+	useEffect(() => {
+		;(async () => {
+			try {
+				const res = await fetch(
+					`${process.env.API_URL}/wp-json/wp/v2/posts?per_page=4&_embed&categories=2`
+				)
+				const data = await res.json()
+				if (data.code === 'rest_no_route') {
+					throw new Error({ error: '404' })
+				}
+				setDataPost(data)
+				setLoading(false)
+			} catch (error) {
+				setErrorPosts(error)
+				setLoading(false)
+			}
+		})()
+	}, [])
 
 	return (
 		<>
@@ -47,7 +69,7 @@ const Home = ({ dataPosts, errorPosts, dataObras }) => {
 						</div>
 					</div>
 				)}
-				<ProjectSection dataObras={dataObras} />
+				<ProjectSection />
 				<div className="sec3">
 					<div className="box-1">
 						<div className="cont">
@@ -128,18 +150,26 @@ const Home = ({ dataPosts, errorPosts, dataObras }) => {
 						</h3>
 					</div>
 					<div className="content-blog">
-						{errorPosts ? (
-							<div className="blog-error">
-								<p>Ocurrió un error al traer la información del blog</p>
+						{loading ? (
+							<div className="content-blog__loading">
+								Cargando datos del blog ...
 							</div>
 						) : (
 							<>
-								{dataPosts.map((post, index) => {
-									if (clientLoad && !isMobile && index === 3) {
-										return null
-									}
-									return <PostListItem key={post.id} post={post} />
-								})}
+								{errorPosts ? (
+									<div className="blog-error">
+										<p>Ocurrió un error al traer la información del blog</p>
+									</div>
+								) : (
+									<>
+										{dataPosts.map((post, index) => {
+											if (clientLoad && !isMobile && index === 3) {
+												return null
+											}
+											return <PostListItem key={post.id} post={post} />
+										})}
+									</>
+								)}
 							</>
 						)}
 					</div>
@@ -177,32 +207,6 @@ const Home = ({ dataPosts, errorPosts, dataObras }) => {
 			</Layout>
 		</>
 	)
-}
-
-export async function getServerSideProps() {
-	try {
-		const res = await fetch(
-			`${process.env.API_URL}/wp-json/wp/v2/posts?per_page=4&_embed&categories=2`
-		)
-		const data = await res.json()
-		if (data.code === 'rest_no_route') {
-			throw new Error({ error: '404' })
-		}
-		const resObras = await fetch(
-			`${process.env.API_URL}/wp-json/wp/v2/posts?per_page=2&_embed&categories=4&orderby=modified`
-		)
-		const dataObras = await resObras.json()
-		if (dataObras.code === 'rest_no_route') {
-			throw new Error({ error: '404' })
-		}
-		return {
-			props: { dataPosts: data, dataObras },
-		}
-	} catch (error) {
-		return {
-			props: { errorPosts: error },
-		}
-	}
 }
 
 export default Home

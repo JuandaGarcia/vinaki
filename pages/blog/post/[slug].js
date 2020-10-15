@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import Layout from '../../../src/components/Layout'
 import usePost from '../../../src/hooks/usePost'
 import Link from 'next/link'
@@ -7,9 +7,27 @@ import PostListItem from '../../../src/components/PostListItem'
 import { Context } from '../../_app'
 import '../../../src/styles/pages/individualBlog.module.css'
 
-const Blog = ({ data, error, dataPosts }) => {
+const Blog = ({ data, error }) => {
 	const { formatDate } = usePost()
+	const [dataPosts, setDataPosts] = useState([])
+	const [loading, setLoading] = useState(true)
+	const [errorPost, setErrorPost] = useState(null)
 	const { isMobile, clientLoad } = useContext(Context)
+	useEffect(() => {
+		;(async () => {
+			try {
+				const res = await fetch(
+					`${process.env.API_URL}/wp-json/wp/v2/posts?per_page=3&_embed&categories=2`
+				)
+				const data = await res.json()
+				setDataPosts(data)
+				setLoading(false)
+			} catch (error) {
+				setLoading(false)
+				setErrorPost(error)
+			}
+		})()
+	}, [])
 	return (
 		<>
 			<HeadApp title={data[0].title.rendered} />
@@ -59,25 +77,33 @@ const Blog = ({ data, error, dataPosts }) => {
 										<h3 className="individualBlog__title__h3">Relacionados</h3>
 										<br />
 										<div className="individualBlog__relacionados__container">
-											<>
-												{error ? (
-													<div className="blog-error">
-														<p>
-															Ocurrió un error al traer la información de los
-															relacionados
-														</p>
-													</div>
-												) : (
-													<>
-														{dataPosts.map((post, index) => {
-															if (clientLoad && isMobile && index === 2) {
-																return null
-															}
-															return <PostListItem key={post.id} post={post} />
-														})}
-													</>
-												)}
-											</>
+											{loading ? (
+												<div className="loadingSection">
+													<p>Loading</p>
+												</div>
+											) : (
+												<>
+													{errorPost ? (
+														<div className="blog-error">
+															<p>
+																Ocurrió un error al traer la información de los
+																relacionados
+															</p>
+														</div>
+													) : (
+														<>
+															{dataPosts.map((post, index) => {
+																if (clientLoad && isMobile && index === 2) {
+																	return null
+																}
+																return (
+																	<PostListItem key={post.id} post={post} />
+																)
+															})}
+														</>
+													)}
+												</>
+											)}
 										</div>
 									</div>
 								</div>
@@ -105,12 +131,8 @@ export async function getServerSideProps({ params }) {
 			`${process.env.API_URL}/wp-json/wp/v2/posts?slug=${params.slug}&_embed&categories=2`
 		)
 		const data = await res.json()
-		const resBlogs = await fetch(
-			`${process.env.API_URL}/wp-json/wp/v2/posts?per_page=3&_embed&categories=2`
-		)
-		const dataPosts = await resBlogs.json()
 		return {
-			props: { data, dataPosts },
+			props: { data },
 		}
 	} catch {
 		return {
