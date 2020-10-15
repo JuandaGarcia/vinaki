@@ -15,27 +15,29 @@ const obras = () => {
 	const [totalPages, setTotalPages] = useState(0)
 
 	useEffect(() => {
-		;(async () => {
-			try {
-				const res = await fetch(
-					`${process.env.API_URL}/wp-json/wp/v2/posts?per_page=4&_embed&page=${query.page}&categories=4`
-				)
-				setErrorPosts(null)
-				setTotalPages(res.headers.get('X-WP-TotalPages'))
-				const data = await res.json()
-				if (
-					data.code === 'rest_invalid_param' ||
-					data.code === 'rest_post_invalid_page_number'
-				) {
-					throw new Error(data.code)
+		if (query.page) {
+			;(async () => {
+				try {
+					const res = await fetch(
+						`${process.env.API_URL}/wp-json/wp/v2/posts?per_page=4&_embed&page=${query.page}&categories=4`
+					)
+					setErrorPosts(null)
+					setTotalPages(res.headers.get('X-WP-TotalPages'))
+					const data = await res.json()
+					if (
+						data.code === 'rest_invalid_param' ||
+						data.code === 'rest_post_invalid_page_number'
+					) {
+						throw new Error(data.code)
+					}
+					setDataPost(data)
+					setLoading(false)
+				} catch (error) {
+					setErrorPosts(error)
+					setLoading(false)
 				}
-				setDataPost(data)
-				setLoading(false)
-			} catch (error) {
-				setErrorPosts(error)
-				setLoading(false)
-			}
-		})()
+			})()
+		}
 	}, [query.page])
 
 	return (
@@ -109,25 +111,29 @@ const obras = () => {
 									</>
 								)}
 								<div className="media__buttons">
-									{query.page !== '1' && (
-										<Link href={`/obras/${parseInt(query.page) - 1}`}>
-											<a
-												className="media__buttons__button -black"
-												onClick={() => setLoading(true)}
-											>
-												Anterior
-											</a>
-										</Link>
-									)}
-									{totalPages !== query.page && (
-										<Link href={`/obras/${parseInt(query.page) + 1}`}>
-											<a
-												className="media__buttons__button -yellow"
-												onClick={() => setLoading(true)}
-											>
-												Siguiente
-											</a>
-										</Link>
+									{!errorPosts && (
+										<>
+											{query.page !== '1' && (
+												<Link href={`/obras/${parseInt(query.page) - 1}`}>
+													<a
+														className="media__buttons__button -black"
+														onClick={() => setLoading(true)}
+													>
+														Anterior
+													</a>
+												</Link>
+											)}
+											{totalPages !== query.page && (
+												<Link href={`/obras/${parseInt(query.page) + 1}`}>
+													<a
+														className="media__buttons__button -yellow"
+														onClick={() => setLoading(true)}
+													>
+														Siguiente
+													</a>
+												</Link>
+											)}
+										</>
 									)}
 								</div>
 							</>

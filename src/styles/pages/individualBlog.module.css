@@ -1,6 +1,6 @@
 .individualBlog {
 	box-sizing: border-box;
-	width: 100%;
+	width: 90%;
 	min-height: 100vh;
 	padding: 9em 5em;
 	display: grid;

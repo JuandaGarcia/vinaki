@@ -30,6 +30,10 @@
 	-webkit-tap-highlight-color: transparent;
 }
 
+:root {
+	--swiper-theme-color: #f2de02 !important;
+}
+
 a {
 	color: inherit;
 	text-decoration: none;

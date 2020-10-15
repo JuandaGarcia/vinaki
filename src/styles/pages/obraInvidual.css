@@ -1,15 +1,40 @@
 .obraIndividual {
 	min-height: 100vh;
-	width: 100%;
+	width: 90%;
 	max-width: 1440px;
 	margin: 0 auto;
+	padding: 10em 0;
+}
+
+.obraIndividual * {
+	box-sizing: border-box;
+}
+
+.obraIndividual__lines {
+	position: absolute;
+	left: 0;
+	width: 10%;
+	top: 15%;
 }
 
 .obraIndividual__obra {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 60vh;
 	grid-template-areas: 'text img';
-	grid-gap: 2em;
+	grid-gap: 6em;
+	font-family: gilroyRegular;
+	margin-bottom: 5em;
+}
+
+.obraIndividual__title {
+	font-family: gilroyBold;
+	font-size: 3em;
+}
+
+.obraIndividual__obra h2 {
+	font-size: 2em;
+	margin: 1.5em 0;
 }
 
 .obraIndividual__obra__text {
@@ -28,11 +53,47 @@
 }
 
 .obraIndividual__slider {
-	width: 100%;
+	width: 99vw;
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
 }
 
 .obraIndividual__slider__img {
 	height: 50vh;
 	width: 100%;
 	object-fit: cover;
+}
+
+@media screen and (max-width: 1024px) {
+	.obraIndividual {
+		padding-top: 0;
+		padding-bottom: 1em;
+		width: 100%;
+	}
+	.obraIndividual__obra {
+		grid-template-columns: 1fr;
+		grid-template-rows: 50vh auto;
+		grid-template-areas:
+			'img'
+			'text';
+		grid-gap: 2em;
+	}
+
+	.obraIndividual__obra__text {
+		padding: 0 2em;
+	}
+
+	.obraIndividual__title {
+		margin-left: 35%;
+		font-size: 2em;
+	}
+	.obraIndividual__obra h2 {
+		margin-left: 35%;
+		font-size: 1em;
+	}
+	.obraIndividual__lines {
+		top: 53%;
+		width: 16%;
+	}
 }
