@@ -7,76 +7,78 @@ const Autores = () => {
 	return (
 		<>
 			<HeadApp title="Autores" />
-			<Layout logoWhite>
-				<div>
-					<div className="sec1-autores">
-						<div className="box-2">
-							<h3>AUTORES</h3>
-							<div className="box-x" />
-							<img src="assets/img/autores/fondo.png" alt="" />
-						</div>
-					</div>
-					<div className="sec2-autores">
-						<p>
-							Lorem ipsum dolor sit amet consect-autoresetur adipisicing elit.
-							Velit at sed, corrupti ab laborum molestiae iure culpa et
-							laboriosam non neque maiores dolor, magni deserunt ipsam
-							repudiandae, ipsa veniam, fugiat. Lorem ipsum dolor sit amet
-							consect-autoresetur adipisicing elit. Velit at sed, corrupti ab
-							laborum molestiae iure culpa et laboriosam non neque maiores
-							dolor, magni deserunt ipsam repudiandae, ipsa veniam, fugiat.
-							fugiat. Lorem ipsum dolor sit amet consect-autoresetur adipisicing
-							elit. Velit at sed, corrupti ab laborum molestiae iure culpa et
-							laboriosam non neque maiores dolor, magni deserunt ipsam
-							repudiandae, ipsa veniam, fugiat.
-						</p>
-					</div>
-					<div className="sec3-autores">
-						<div className="text">
-							<h3>Lorem Ipsum</h3>
+			<Layout>
+				<main className="autores">
+					<h1 className="autores__h">AUTORES</h1>
+
+					<p className="autores__text">
+						Fundada en 2016, Vinaki Arquitectos nace para dejar huella en la
+						historia de la arquitectura, nace para crear espacios entre el
+						confort y lo selecto, convirtiendo cada proyecto en una obra de
+						arte.
+						<br />
+						Nos reinventamos para llegar a cada rincon del planeta. Nuestra
+						arquitectura está enmarcada por un estilo que nos lleva a construir
+						diferente; reinterpretando la contemporaneidad y la arquitectura
+						sostenible conservando la elegancia y lo impecable.
+						<br />
+						La colaboración entre la experiencia, versatilidad y nuestro equipo
+						multidisciplinar nos permiten ir desde el diseño, urbanismo,
+						paisajismo, interiorismo y consultoría en optimización de procesos
+						en proyectos de carácter arquitectónico y constructivo. Encontrando
+						todo en Vinaki.
+					</p>
+					<div className="autores__section">
+						<img
+							src="/assets/img/autores/autores1.JPG"
+							alt="Snaider Hoyos Mahecha"
+							className="autores__section__img"
+						/>
+						<div className="autores__section__text">
+							<h2 className="autores__h -name">Snaider Hoyos Mahecha</h2>
 							<p>
-								Lorem ipsum, dolor sit amet <br /> quaerat, voluptatum saepe
-								placeat alias pariatur similique sint fuga praesentium nisi
-								libero nulla sequi dolore consequatur ex eum minus eos!
-								<br /> quaerat, voluptatum saepe
+								<strong>Arquitecto co-fundador y gerente de Vinaki.</strong>
 							</p>
+							<br />
 							<p>
-								Lorem ipsum, dolor sit amet consect-autoresetur adipisicing
-								elit. Delectus veniam quaerat, voluptatum saepe placeat alias
-								pariatur similique sint fuga praesentium nisi libero nulla sequi
-								dolore consequatur ex eum minus eos! <br />
-								quaerat, voluptatum saepe
-							</p>
-						</div>
-						<div className="image">
-							<img src="assets/img/autores/foto1.png" alt="" />
-						</div>
-					</div>
-					<div className="sec3-autores wrap">
-						<div className="image">
-							<img src="assets/img/autores/foto1.png" alt="" />
-						</div>
-						<div className="text">
-							<h3>Lorem Ipsum</h3>
-							<p>
-								Lorem ipsum, dolor sit amet quaerat, voluptatum saepe placeat
-								alias pariatur similique sint fuga praesentium nisi libero nulla
-								sequi dolore consequatur ex eum minus eos!
-								<br /> quaerat, voluptatum saepe
-							</p>
-							<p>
-								Lorem ipsum, dolor sit amet consect-autoresetur adipisicing
-								elit. Delectus veniam quaerat, voluptatum saepe placeat alias
-								pariatur similique sint fuga praesentium nisi libero nulla sequi
-								dolore consequatur ex eum minus eos! <br />
-								quaerat, voluptatum saepe
+								Encargado de direccionar el departamento de diseño generando la
+								conceptualización que nos identifica como arquitectos.
 							</p>
 						</div>
 					</div>
-					<div className="sec4-autores">
-						<img src="assets/img/autores/recurso1.png" alt="" />
+					<div className="autores__section -reverse">
+						<div className="autores__section__text">
+							<h2 className="autores__h -name">Laura Victoria Andrade Falla</h2>
+							<p>
+								<strong>
+									Arquitecta especialista en gerencia de proyectos de
+									construcción e infraestructura y directora de proyectos en
+									Vinaki Arquitectos.
+								</strong>
+							</p>
+							<br />
+							<p>
+								Encargada de diseñar planes y programas de desarrollo en la
+								construcción. Definir la formulación y progreso de los proyectos
+								que determine el plan diseñado. Evaluar la viabilidad técnica y
+								económica implantando los correctivos en el desarrollo para
+								llevar a cabo la ejecución de las obras en tiempo, costo,
+								calidad y seguridad; haciendo posible que todos nuestros
+								clientes hagan realidad sus proyectos soñados.
+							</p>
+						</div>
+						<img
+							src="/assets/img/autores/autores2.JPG"
+							alt="Laura Victoria Andrade Falla"
+							className="autores__section__img"
+						/>
 					</div>
-				</div>
+				</main>
+				<img
+					className="autores__lines"
+					src="/assets/img/autores/recurso1.png"
+					alt="Recurso"
+				/>
 			</Layout>
 		</>
 	)

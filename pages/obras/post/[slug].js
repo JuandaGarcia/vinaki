@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
+import HeadApp from '../../../src/components/HeadApp'
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper'
 import Layout from '../../../src/components/Layout'
 import '../../../src/styles/pages/obraInvidual.css'
@@ -24,53 +25,56 @@ const Post = (data, error) => {
 	}, [])
 
 	return (
-		<Layout>
-			<main className="obraIndividual">
-				<section className="obraIndividual__obra">
-					<div>
-						<h1>{data.data[0].title.rendered}</h1>
-						<div
-							className="obraIndividual__obra__text"
-							dangerouslySetInnerHTML={{
-								__html: data.data[0].content.rendered,
-							}}
-						></div>
-					</div>
-					<picture className="obraIndividual__obra__imgContainer">
-						{data.data[0]._embedded['wp:featuredmedia'] ? (
-							<img
-								className="obraIndividual__obra__imgContainer__img"
-								src={data.data[0]._embedded['wp:featuredmedia'][0].source_url}
-								alt={data.data[0].title.rendered}
-							/>
-						) : (
-							<img
-								className="obraIndividual__obra__imgContainer__img"
-								src="/assets/img/global/not-found.jpg"
-								alt={data.data[0].title.rendered}
-							/>
-						)}
-					</picture>
-				</section>
-				{imagesSRC.length && (
-					<section className="obraIndividual__slider">
-						<Swiper spaceBetween={50} slidesPerView={3} navigation>
-							{imagesSRC.map((src) => {
-								return (
-									<SwiperSlide key={src}>
-										<img
-											className="obraIndividual__slider__img"
-											src={src}
-											alt="Item"
-										/>
-									</SwiperSlide>
-								)
-							})}
-						</Swiper>
+		<>
+			<HeadApp title={data.data[0].title.rendered} />
+			<Layout>
+				<main className="obraIndividual">
+					<section className="obraIndividual__obra">
+						<div>
+							<h1>{data.data[0].title.rendered}</h1>
+							<div
+								className="obraIndividual__obra__text"
+								dangerouslySetInnerHTML={{
+									__html: data.data[0].content.rendered,
+								}}
+							></div>
+						</div>
+						<picture className="obraIndividual__obra__imgContainer">
+							{data.data[0]._embedded['wp:featuredmedia'] ? (
+								<img
+									className="obraIndividual__obra__imgContainer__img"
+									src={data.data[0]._embedded['wp:featuredmedia'][0].source_url}
+									alt={data.data[0].title.rendered}
+								/>
+							) : (
+								<img
+									className="obraIndividual__obra__imgContainer__img"
+									src="/assets/img/global/not-found.jpg"
+									alt={data.data[0].title.rendered}
+								/>
+							)}
+						</picture>
 					</section>
-				)}
-			</main>
-		</Layout>
+					{imagesSRC.length && (
+						<section className="obraIndividual__slider">
+							<Swiper spaceBetween={50} slidesPerView={3} navigation>
+								{imagesSRC.map((src) => {
+									return (
+										<SwiperSlide key={src}>
+											<img
+												className="obraIndividual__slider__img"
+												src={src}
+												alt="Item"
+											/>
+										</SwiperSlide>
+									)
+								})}
+							</Swiper>
+						</section>
+					)}
+				</main>
+			</Layout>
+		</>
 	)
 }
 
