@@ -76,7 +76,7 @@ const Contacto = () => {
 						<div className="box-2">
 							<h3>CONTACTO</h3>
 							<div className="box-x" />
-							<img src="assets/img/contacto/fondo.png" alt="" />
+							<img src="assets/img/contacto/fondo.jpg" alt="" />
 						</div>
 					</div>
 					<div className="sec2-contacto">
