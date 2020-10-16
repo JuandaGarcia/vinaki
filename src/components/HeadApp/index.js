@@ -11,7 +11,7 @@ const HeadApp = ({ title, metaDescription }) => {
 					name="viewport"
 					content="width=device-width, initial-scale=1.0, user-scalable=no"
 				/>
-				<link rel="icon" href="/assets/img/menu/logo02.png" />
+				<link rel="icon" href="/assets/img/footer/v.png" />
 				<title>Vinaki{title ? ` - ${title}` : ''}</title>
 				<meta name="description" content={metaDescription} />
 				{clientLoad && window.location.host === process.env.DOMAIN ? (
