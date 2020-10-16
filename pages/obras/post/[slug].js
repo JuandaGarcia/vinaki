@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react'
-import { Swiper, SwiperSlide } from 'swiper/react'
 import HeadApp from '../../../src/components/HeadApp'
+import { Swiper, SwiperSlide } from 'swiper/react'
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper'
 import Layout from '../../../src/components/Layout'
 import { Context } from '../../_app'

@@ -56,8 +56,23 @@ a {
 	background: rgba(0, 0, 0, 0.5);
 }
 
+.swal2-title {
+	font-family: gilroyBold;
+}
+
 @media screen and (max-width: 768px) {
 	body {
 		font-size: 4vw;
+	}
+}
+
+@keyframes box-rigth {
+	from {
+		width: 20vw;
+		transform: translateX(-50vw);
+	}
+	to {
+		width: 70px;
+		transform: translateX(0);
 	}
 }

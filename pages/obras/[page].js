@@ -1,14 +1,12 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Layout from '../../src/components/Layout'
 import HeadApp from '../../src/components/HeadApp'
 import Link from 'next/link'
-import { Context } from '../_app'
 import { useRouter } from 'next/router'
 import '../../src/styles/pages/Obras.css'
 
 const obras = () => {
 	const { query } = useRouter()
-	const { isMobile, clientLoad } = useContext(Context)
 	const [dataPosts, setDataPost] = useState([])
 	const [loading, setLoading] = useState(true)
 	const [errorPosts, setErrorPosts] = useState(null)

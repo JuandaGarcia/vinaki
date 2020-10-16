@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Layout from '../src/components/Layout'
 import HeadApp from '../src/components/HeadApp'
+import Swal from 'sweetalert2'
 import '../src/styles/pages/Contacto.css'
 
 const Contacto = () => {
@@ -12,13 +13,58 @@ const Contacto = () => {
 		message: '',
 	})
 
-	const handleSubmit = (e) => {
-		e.preventDefault()
-		alert('se envio')
-	}
-
 	const handleChange = (e) => {
 		setFormData({ ...formData, [e.target.name]: e.target.value })
+	}
+
+	const handleSubmit = async (e) => {
+		e.preventDefault()
+		let myHeaders = new Headers()
+		myHeaders.append('Content-Type', 'application/x-www-form-urlencoded')
+
+		let urlencoded = new URLSearchParams()
+		urlencoded.append('name', formData.name)
+		urlencoded.append('lastName', formData.lastName)
+		urlencoded.append('phone', formData.phone)
+		urlencoded.append('email', formData.email)
+		urlencoded.append('message', formData.message)
+
+		let requestOptions = {
+			mode: 'no-cors',
+			method: 'POST',
+			headers: myHeaders,
+			body: urlencoded,
+			redirect: 'follow',
+		}
+
+		try {
+			await fetch(
+				`https://servicios.juandagarcia.com/vinaki-mail.php`,
+				requestOptions
+			).then(() => {
+				Swal.fire({
+					position: 'center',
+					icon: 'success',
+					title: 'El mensaje se envió con éxito',
+					showConfirmButton: false,
+				})
+			})
+		} catch (error) {
+			Swal.fire({
+				position: 'center',
+				icon: 'error',
+				title: 'Ocurrió un error, por favor inténtalo mas tarde',
+				showConfirmButton: false,
+			})
+		}
+
+		setFormData({
+			name: '',
+			lastName: '',
+			phone: '',
+			email: '',
+			message: '',
+		})
 	}
 
 	return (
@@ -100,7 +146,7 @@ const Contacto = () => {
 							</div>
 							<div className="two">
 								<input
-									type="text"
+									type="number"
 									placeholder="Telefono"
 									name="phone"
 									required
@@ -108,7 +154,7 @@ const Contacto = () => {
 									onChange={handleChange}
 								/>
 								<input
-									type="text"
+									type="email"
 									placeholder="Email"
 									name="email"
 									required

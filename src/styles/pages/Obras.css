@@ -17,6 +17,9 @@
 	font-size: 48px;
 	line-height: 40px;
 	font-weight: bold;
+	z-index: 50;
+	position: absolute;
+	animation: opacity-up 1s;
 }
 
 .sec1-obras .box-2 {
@@ -38,6 +41,8 @@
 	position: absolute;
 	left: 23rem;
 	top: 120px;
+	z-index: 25;
+	animation: box-rigth 1s;
 }
 
 .sec1-obras .box-2 .box-y {
@@ -232,5 +237,16 @@ figure.snip0015:hover figcaption::before {
 	}
 	figure.large {
 		height: 290px;
+	}
+}
+
+@keyframes opacity-up {
+	from {
+		opacity: 0;
+		transform: translate(0, 2em);
+	}
+	to {
+		opacity: 1;
+		transform: translate(0, 0);
 	}
 }

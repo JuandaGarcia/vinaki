@@ -5,13 +5,26 @@ import PostListItem from '../src/components/PostListItem'
 import ProjectSection from '../src/components/ProjectSection'
 import HeadApp from '../src/components/HeadApp'
 import { Context } from './_app'
+import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper'
+import { Swiper, SwiperSlide } from 'swiper/react'
 import '../src/styles/pages/Home.css'
+
+import 'swiper/swiper.scss'
+import 'swiper/components/navigation/navigation.scss'
+import 'swiper/components/pagination/pagination.scss'
+import 'swiper/components/scrollbar/scrollbar.scss'
+
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y])
 
 const Home = () => {
 	const { isMobile, clientLoad } = useContext(Context)
 	const [dataPosts, setDataPost] = useState([])
 	const [loading, setLoading] = useState(true)
 	const [errorPosts, setErrorPosts] = useState(null)
+
+	const [dataInstagram, setDataInstagram] = useState([])
+	const [loadingInstagram, setLoadingInstagram] = useState(true)
+	const [errorInstagram, setErrorInstagram] = useState(null)
 
 	useEffect(() => {
 		;(async () => {
@@ -30,7 +43,25 @@ const Home = () => {
 				setLoading(false)
 			}
 		})()
+		getInstagramData()
 	}, [])
+
+	const getInstagramData = async () => {
+		try {
+			setLoadingInstagram(true)
+			const res = await fetch(
+				'https://www.instagram.com/vinakiarquitectos/?__a=1'
+			)
+			const data = await res.json()
+			const mediaArray = data.graphql.user.edge_owner_to_timeline_media.edges
+			const postURLS = mediaArray.map((item) => item.node.display_url)
+			setDataInstagram(postURLS)
+			setLoadingInstagram(false)
+		} catch (error) {
+			setErrorInstagram(error)
+			setLoadingInstagram(false)
+		}
+	}
 
 	return (
 		<>
@@ -189,7 +220,7 @@ const Home = () => {
 						/>
 						<span> @vinakiarquitectos</span>
 					</a>
-					<div>
+					{/* <div>
 						<a
 							href={process.env.INSTAGRAM}
 							target="_blank"
@@ -202,7 +233,22 @@ const Home = () => {
 							<img src="/assets/img/home/instagram04.png" alt="" />
 							<img src="/assets/img/home/instagram05.png" alt="" />
 						</a>
-					</div>
+					</div> */}
+					<section className="home__slider">
+						<Swiper
+							spaceBetween={isMobile ? 30 : 50}
+							slidesPerView={isMobile ? 3 : 4}
+							navigation
+						>
+							{dataInstagram.map((src) => {
+								return (
+									<SwiperSlide key={src}>
+										<img className="home__slider__img" src={src} alt="Item" />
+									</SwiperSlide>
+								)
+							})}
+						</Swiper>
+					</section>
 				</div>
 			</Layout>
 		</>
