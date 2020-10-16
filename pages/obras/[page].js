@@ -42,7 +42,7 @@ const obras = () => {
 		<>
 			<HeadApp title="Obras" />
 			<Layout>
-				<div>
+				<div className="obrasPage__container">
 					<div className="sec1-obras">
 						<div className="box-1">
 							<p>OBRAS</p>

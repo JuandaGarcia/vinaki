@@ -29,7 +29,7 @@ const Post = (data, error) => {
 	return (
 		<>
 			<HeadApp title={data.data[0].title.rendered} />
-			<Layout>
+			<Layout isObra>
 				<img
 					className="obraIndividual__lines"
 					src="/assets/img/obras/recurso3.png"

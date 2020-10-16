@@ -18,6 +18,29 @@
 	font-size: 40px;
 	line-height: 40px;
 	font-weight: bold;
+	opacity: 0;
+	animation: opacity 1s forwards;
+}
+
+.palabra__verde {
+	transform: translate(3.8em, -1em);
+	display: inline-block;
+	animation: palabra-verde 1s forwards;
+	animation-delay: 1s;
+}
+
+.palabra__construido {
+	transform: translate(4.3em, -2em);
+	display: inline-block;
+	animation: palabra-construido 1s forwards;
+	animation-delay: 1s;
+}
+
+.cada-espacio-frase {
+	transform: translate(0, -1em);
+	display: inline-block;
+	animation: cada-espacio-frase 1s forwards;
+	animation-delay: 1s;
 }
 
 .sec1 .box-2 {
@@ -25,6 +48,13 @@
 	display: flex;
 	flex-direction: column;
 	align-items: flex-end;
+	position: relative;
+}
+
+.animationImage {
+	transform: translate(30vw, 0);
+	animation: animationImage 1s forwards;
+	animation-delay: 1s;
 }
 
 .sec1 .box-2 img {
@@ -32,12 +62,18 @@
 	height: auto;
 }
 
+.imgColor {
+	position: absolute;
+	width: 85% !important;
+	bottom: 10%;
+}
+
 .sec1 .box-2 .box-x {
 	width: 70px;
 	height: 80px;
 	background-color: #f2de02;
 	position: absolute;
-	left: 23rem;
+	left: -15em;
 	top: 120px;
 	animation: box-rigth 1s;
 }
@@ -285,6 +321,10 @@
 	margin: 1em 0;
 }
 
+.instagram__link span {
+	margin-left: 0.2em;
+}
+
 .sec6 h3 {
 	color: #000;
 	font-family: gilroyBold;
@@ -320,6 +360,7 @@
 	box-sizing: border-box;
 	padding: 2em;
 	padding-right: 0;
+	margin-top: 4em;
 }
 
 .sec1-mobile__container {
@@ -506,5 +547,50 @@
 	}
 	to {
 		transform: translateX(0);
+	}
+}
+
+@keyframes opacity {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes palabra-verde {
+	0% {
+		transform: translate(3.8em, -1em);
+	}
+	100% {
+		transform: translate(0, 0);
+	}
+}
+
+@keyframes palabra-construido {
+	0% {
+		transform: translate(4.3em, -2em);
+	}
+	100% {
+		transform: translate(0, 0);
+	}
+}
+
+@keyframes cada-espacio-frase {
+	0% {
+		transform: translate(0, -1em);
+	}
+	100% {
+		transform: translate(0, 0);
+	}
+}
+
+@keyframes animationImage {
+	from {
+		transform: translate(30vw, 0);
+	}
+	to {
+		transform: translate(0, 0);
 	}
 }

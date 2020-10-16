@@ -80,22 +80,33 @@ const Home = () => {
 					<div className="sec1">
 						<div className="box-1">
 							<p>
-								UNA
+								<span>UNA</span>
 								<br />
-								HUELLA
+								<span>HUELLA</span>
 								<br />
-								VERDE
+								<span className="palabra__verde">VERDE</span>
 								<br />
-								EN CADA
+								<span className="cada-espacio-frase">
+									EN CADA
+									<br />
+									ESPACIO
+								</span>
 								<br />
-								ESPACIO
-								<br />
-								CONSTRUIDO
+								<span className="palabra__construido">CONSTRUIDO</span>
 							</p>
 						</div>
 						<div className="box-2">
 							<div className="box-x" />
-							<img src="/assets/img/home/foto1.jpg" alt="" />
+							<img
+								className="animationImage"
+								src="/assets/img/home/foto1-gray.jpg"
+								alt=""
+							/>
+							<img
+								className="imgColor animationImage"
+								src="/assets/img/home/foto1.jpg"
+								alt=""
+							/>
 							<div className="box-y" />
 						</div>
 					</div>
@@ -218,22 +229,8 @@ const Home = () => {
 							src="/assets/icons/instagram.svg"
 							alt="Instagram"
 						/>
-						<span> @vinakiarquitectos</span>
+						<span>@vinakiarquitectos</span>
 					</a>
-					{/* <div>
-						<a
-							href={process.env.INSTAGRAM}
-							target="_blank"
-							rel="noopener noreferrer"
-							className="feed"
-						>
-							<img src="/assets/img/home/instagram01.png" alt="" />
-							<img src="/assets/img/home/instagram02.png" alt="" />
-							<img src="/assets/img/home/instagram03.png" alt="" />
-							<img src="/assets/img/home/instagram04.png" alt="" />
-							<img src="/assets/img/home/instagram05.png" alt="" />
-						</a>
-					</div> */}
 					<section className="home__slider">
 						<Swiper
 							spaceBetween={isMobile ? 30 : 50}

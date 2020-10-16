@@ -65,8 +65,6 @@ const index = () => {
 												/>
 											)}
 											<h2 className="titulo">{project.title.rendered}</h2>
-											<p>Elaborado en:</p>
-											<p>Autores: </p>
 											<br />
 											<div
 												dangerouslySetInnerHTML={{

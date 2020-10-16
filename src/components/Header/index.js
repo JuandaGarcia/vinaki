@@ -5,7 +5,7 @@ import { Context } from '../../../pages/_app'
 import './styles.css'
 import './burger-button.css'
 
-const Header = ({ logoWhite }) => {
+const Header = ({ logoWhite, isBlog, isObra }) => {
 	const [openMenu, setOpenMenu] = useState(false)
 	const { clientLoad, isMobile } = useContext(Context)
 
@@ -21,6 +21,13 @@ const Header = ({ logoWhite }) => {
 	return (
 		<header className="head">
 			<div className="menu">
+				{clientLoad && isMobile && (isBlog || isObra) && (
+					<Link href={isBlog ? '/blog/1' : '/obras/1'}>
+						<a className="arrow">
+							<img src={`/assets/img/global/arrow.png`} alt="Logo" />
+						</a>
+					</Link>
+				)}
 				<Link href="/">
 					<a className="logo">
 						<img

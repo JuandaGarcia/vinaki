@@ -2,6 +2,7 @@
 	width: 100%;
 	position: absolute;
 	z-index: 1000;
+	top: 0;
 }
 
 .head .menu {
@@ -10,6 +11,15 @@
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
+}
+
+.arrow {
+	width: 2em;
+	position: absolute;
+	left: 1.5em;
+}
+.arrow img {
+	width: 100%;
 }
 
 .head .menu .logo {

@@ -31,7 +31,7 @@ const Blog = ({ data, error }) => {
 	return (
 		<>
 			<HeadApp title={data[0].title.rendered} />
-			<Layout>
+			<Layout isBlog>
 				{error ? (
 					<div className="individualBlog__error">
 						<p className="individualBlog__error__p">
