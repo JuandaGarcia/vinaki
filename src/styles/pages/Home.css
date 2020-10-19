@@ -232,22 +232,24 @@
 
 .sec4 img {
 	height: 75vh;
+	width: 100%;
 	object-fit: cover;
 }
 
 #aut {
-	position: absolute;
 	display: flex;
-	justify-content: center;
-	left: 50%;
-	bottom: 0;
-	transform: translate(-50%, 50%);
 	z-index: 500;
+	justify-content: center;
+	width: 100%;
+	grid-column: 1 / -1;
+	position: static;
+	transform: none;
+	margin-top: 2em;
 }
 
 .sec4 .autores {
 	background: #f2de02;
-	width: 80%;
+	width: 100%;
 	box-sizing: border-box;
 	padding: 20px 25px;
 }
@@ -486,6 +488,7 @@
 		grid-column: 1 / -1;
 		position: static;
 		transform: none;
+		margin-top: 1em;
 	}
 	.sec4 .autores {
 		background: #f2de02;

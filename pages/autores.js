@@ -9,7 +9,7 @@ const Autores = () => {
 			<HeadApp title="Autores" />
 			<Layout>
 				<main className="autores">
-					<h1 className="autores__h">AUTORES</h1>
+					<h1 className="autores__h autores__title">AUTORES</h1>
 
 					<p className="autores__text">
 						Fundada en 2016, Vinaki Arquitectos nace para dejar huella en la
@@ -21,6 +21,7 @@ const Autores = () => {
 						arquitectura está enmarcada por un estilo que nos lleva a construir
 						diferente; reinterpretando la contemporaneidad y la arquitectura
 						sostenible conservando la elegancia y lo impecable.
+						<br />
 						<br />
 						La colaboración entre la experiencia, versatilidad y nuestro equipo
 						multidisciplinar nos permiten ir desde el diseño, urbanismo,
@@ -40,7 +41,7 @@ const Autores = () => {
 								<strong>Arquitecto co-fundador y gerente de Vinaki.</strong>
 							</p>
 							<br />
-							<p>
+							<p className="autor__text">
 								Encargado de direccionar el departamento de diseño generando la
 								conceptualización que nos identifica como arquitectos.
 							</p>
@@ -57,7 +58,7 @@ const Autores = () => {
 								</strong>
 							</p>
 							<br />
-							<p>
+							<p className="autor__text">
 								Encargada de diseñar planes y programas de desarrollo en la
 								construcción. Definir la formulación y progreso de los proyectos
 								que determine el plan diseñado. Evaluar la viabilidad técnica y

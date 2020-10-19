@@ -38,6 +38,11 @@
 	font-size: 2.5em;
 }
 
+.autores__title {
+	background-position: right;
+	animation: autores-title 1s forwards;
+}
+
 .-name {
 	font-size: 2em;
 	position: relative;
@@ -67,6 +72,10 @@
 	padding: 0 10%;
 }
 
+.autor__text {
+	text-align: justify;
+}
+
 @media screen and (max-width: 1024px) {
 	.autores {
 		padding: 0 1em;
@@ -92,5 +101,18 @@
 	}
 	.autores__section {
 		margin: 5em 0;
+	}
+}
+
+@keyframes autores-title {
+	from {
+		background-position: right;
+		opacity: 0;
+		transform: translate(0, 2em);
+	}
+	to {
+		background-position: left;
+		opacity: 1;
+		transform: translate(0, 0);
 	}
 }

@@ -169,16 +169,12 @@ const Home = () => {
 					/>
 					<div id="aut">
 						<div className="autores">
-							<h2>Autores</h2>
 							<p>
 								Laura Victoria Andrade y Snaider Hoyos Mahecha: arquitectos
 								apasionados y comprometidos en diseñar y construir hogares
 								sostenibles, llenos de elegancia y confort, y siempre, dejando
 								una huella verde en cada una de ellas.
 							</p>
-							<Link href="/autores">
-								<a>Conocer más</a>
-							</Link>
 						</div>
 					</div>
 				</div>
@@ -217,7 +213,7 @@ const Home = () => {
 					</div>
 				</div>
 				<div className="sec6">
-					<h3>Siguenos en Instagram</h3>
+					<h3>Síguenos en Instagram</h3>
 					<a
 						href={process.env.INSTAGRAM}
 						target="_blank"

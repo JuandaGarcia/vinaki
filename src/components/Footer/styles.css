@@ -25,7 +25,9 @@ footer .divList a {
 
 footer .divRedes {
 	margin-top: 40px;
-	margin-left: 150px;
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%, 0);
 }
 
 footer .divRedes .redes {
@@ -109,6 +111,9 @@ footer .divRedes .redes {
 		margin: 0;
 		order: -1;
 		margin-bottom: 1em;
+		position: initial;
+		left: 50%;
+		transform: none;
 	}
 	footer .divRedes .redes {
 		display: flex;

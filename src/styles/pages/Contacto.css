@@ -13,7 +13,8 @@
 
 .sec1-contacto .box-2 img {
 	width: 100%;
-	height: auto;
+	object-fit: cover;
+	height: 45vh;
 }
 
 .sec1-contacto .box-2 .box-x {
@@ -22,7 +23,7 @@
 	background-color: #f2de02;
 	position: absolute;
 	left: 14rem;
-	top: 32%;
+	top: 20%;
 }
 
 .sec1-contacto .box-2 h3 {
@@ -31,7 +32,7 @@
 	font-size: 45px;
 	font-family: gilroyBold;
 	left: 45px;
-	top: 48%;
+	top: 30%;
 }
 
 .sec2-contacto {
