@@ -255,6 +255,13 @@
 	max-width: none !important;
 }
 
+.autorName {
+	font-size: 2em;
+	margin-bottom: 1em;
+	font-family: gilroyRegular;
+	text-align: center;
+}
+
 .sec4 .title {
 	grid-column: 1 / -1;
 	text-align: left;
@@ -541,7 +548,11 @@
 		width: 100%;
 	}
 	.home__slider__img {
-		height: 15vh;
+		height: 20vh;
+	}
+	.autorName {
+		font-size: 1em;
+		margin-bottom: 0.5em;
 	}
 }
 

@@ -142,6 +142,7 @@ const Home = () => {
 							id="video"
 							controls
 							preload="auto"
+							poster="https://admin.vinakiarquitectos.com/wp-content/uploads/2020/10/CASA-RM.jpg"
 						></video>
 						<img
 							src="/assets/img/home/recurso2_Mesadetrabajo1.png"
@@ -159,6 +160,8 @@ const Home = () => {
 							</Link>
 						</h3>
 					</div>
+					<h4 className="autorName">Snaider Hoyos Mahecha</h4>
+					<h4 className="autorName">Laura Victoria Andrade</h4>
 					<img
 						src="/assets/img/autores/autores1.JPG"
 						alt="Snaider Hoyos Mahecha"
@@ -229,7 +232,7 @@ const Home = () => {
 					</a>
 					<section className="home__slider">
 						<Swiper
-							spaceBetween={isMobile ? 30 : 50}
+							spaceBetween={isMobile ? 15 : 50}
 							slidesPerView={isMobile ? 3 : 4}
 							navigation
 						>
