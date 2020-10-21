@@ -31,6 +31,7 @@ const Autores = () => {
 					</p>
 					<div className="autores__section">
 						<img
+							loading="lazy"
 							src="/assets/img/autores/autores1.JPG"
 							alt="Snaider Hoyos Mahecha"
 							className="autores__section__img"
@@ -69,6 +70,7 @@ const Autores = () => {
 							</p>
 						</div>
 						<img
+							loading="lazy"
 							src="/assets/img/autores/autores2.JPG"
 							alt="Laura Victoria Andrade Falla"
 							className="autores__section__img"
@@ -76,6 +78,7 @@ const Autores = () => {
 					</div>
 				</main>
 				<img
+					loading="lazy"
 					className="autores__lines"
 					src="/assets/img/autores/recurso1.png"
 					alt="Recurso"

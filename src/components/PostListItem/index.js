@@ -12,12 +12,14 @@ const PostListItem = ({ post }) => {
 					<div className="imagen">
 						{post._embedded['wp:featuredmedia'] ? (
 							<img
+								loading="lazy"
 								className="blog__image"
 								src={post._embedded['wp:featuredmedia'][0].source_url}
 								alt={post.title.rendered}
 							/>
 						) : (
 							<img
+								loading="lazy"
 								className="blog__image"
 								src="/assets/img/global/not-found.jpg"
 								alt="Blog"

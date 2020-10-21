@@ -52,7 +52,7 @@ const Blog = () => {
 						</div>
 						<div className="box-2">
 							<div className="box-x" />
-							<img src="/assets/img/obras/recurso1.png" alt="" />
+							<img loading="lazy" src="/assets/img/obras/recurso1.png" alt="" />
 						</div>
 					</div>
 					<div className="blogContainer">

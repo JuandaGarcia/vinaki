@@ -98,11 +98,13 @@ const Home = () => {
 						<div className="box-2">
 							<div className="box-x" />
 							<img
+								loading="lazy"
 								className="animationImage"
 								src="/assets/img/home/foto1-gray.jpg"
 								alt=""
 							/>
 							<img
+								loading="lazy"
 								className="imgColor animationImage"
 								src="/assets/img/home/foto1.jpg"
 								alt=""
@@ -115,16 +117,14 @@ const Home = () => {
 				<div className="sec3">
 					<div className="box-1">
 						<div className="cont">
-							<img src="/assets/img/home/recurso1_Mesa_de_rabajo1.png" alt="" />
+							<img
+								loading="lazy"
+								src="/assets/img/home/recurso1_Mesa_de_rabajo1.png"
+								alt=""
+							/>
 						</div>
 						<div className="cont-2">
 							<h2>Casa RM</h2>
-							<br />
-							<p>
-								Elaborada en: Gigante, Huila <br />
-								Autores: Vinaki Arquitectos <br />
-								Área: 356 m2.
-							</p>
 							<br />
 							<p>
 								Vivienda residencial con un diseño contemporáneo donde su
@@ -146,6 +146,7 @@ const Home = () => {
 						></video>
 						<img
 							src="/assets/img/home/recurso2_Mesadetrabajo1.png"
+							loading="lazy"
 							alt=""
 							id="mesa"
 						/>
@@ -165,10 +166,12 @@ const Home = () => {
 					<img
 						src="/assets/img/autores/autores1.JPG"
 						alt="Snaider Hoyos Mahecha"
+						loading="lazy"
 					/>
 					<img
 						src="/assets/img/autores/autores2.JPG"
 						alt="Laura Victoria Andrade"
+						loading="lazy"
 					/>
 					<div id="aut">
 						<div className="autores">
@@ -227,6 +230,7 @@ const Home = () => {
 							className="footer__red"
 							src="/assets/icons/instagram.svg"
 							alt="Instagram"
+							loading="lazy"
 						/>
 						<span>@vinakiarquitectos</span>
 					</a>
@@ -239,7 +243,12 @@ const Home = () => {
 							{dataInstagram.map((src) => {
 								return (
 									<SwiperSlide key={src}>
-										<img className="home__slider__img" src={src} alt="Item" />
+										<img
+											loading="lazy"
+											className="home__slider__img"
+											src={src}
+											alt="Item"
+										/>
 									</SwiperSlide>
 								)
 							})}

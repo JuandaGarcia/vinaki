@@ -49,7 +49,7 @@ const obras = () => {
 						</div>
 						<div className="box-2">
 							<div className="box-x" />
-							<img src="/assets/img/obras/recurso1.png" alt="" />
+							<img loading="lazy" src="/assets/img/obras/recurso1.png" alt="" />
 						</div>
 					</div>
 					<div className="media">
@@ -83,6 +83,7 @@ const obras = () => {
 													<figure className="snip0015 large">
 														{obra._embedded['wp:featuredmedia'] ? (
 															<img
+																loading="lazy"
 																className="blog__image"
 																src={
 																	obra._embedded['wp:featuredmedia'][0]
@@ -92,6 +93,7 @@ const obras = () => {
 															/>
 														) : (
 															<img
+																loading="lazy"
 																className="blog__image"
 																src="/assets/img/global/not-found.jpg"
 																alt="Blog"
