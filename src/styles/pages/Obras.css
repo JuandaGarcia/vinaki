@@ -255,14 +255,3 @@ figure.snip0015:hover figcaption::before {
 		right: -10em;
 	}
 }
-
-@keyframes opacity-up {
-	from {
-		opacity: 0;
-		transform: translate(0, 2em);
-	}
-	to {
-		opacity: 1;
-		transform: translate(0, 0);
-	}
-}
