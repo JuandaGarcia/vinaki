@@ -233,7 +233,7 @@ const Home = () => {
 					<section className="home__slider">
 						<Swiper
 							spaceBetween={isMobile ? 15 : 50}
-							slidesPerView={isMobile ? 3 : 4}
+							slidesPerView={isMobile ? 2 : 4}
 							navigation
 						>
 							{dataInstagram.map((src) => {
