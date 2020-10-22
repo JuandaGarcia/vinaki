@@ -97,6 +97,13 @@
 	}
 	.obraIndividual__lines {
 		top: 53%;
+		width: 5%;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.obraIndividual__lines {
+		top: 53%;
 		width: 16%;
 	}
 }

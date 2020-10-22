@@ -6,6 +6,9 @@ import Layout from '../../../src/components/Layout'
 import { Context } from '../../_app'
 import '../../../src/styles/pages/obraInvidual.css'
 
+import Lightbox from 'react-image-lightbox'
+import 'react-image-lightbox/style.css'
+
 import 'swiper/swiper.scss'
 import 'swiper/components/navigation/navigation.scss'
 import 'swiper/components/pagination/pagination.scss'
@@ -16,6 +19,8 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y])
 const Post = (data, error) => {
 	const [imagesSRC, setImagesSRC] = useState([])
 	const { isMobile, clientLoad } = useContext(Context)
+	const [openModal, setOpenModal] = useState(false)
+	const [photoIndex, setPhotoIndex] = useState(0)
 
 	useEffect(() => {
 		const images = document.querySelectorAll('.wp-block-image')
@@ -71,10 +76,14 @@ const Post = (data, error) => {
 								slidesPerView={isMobile ? 1 : 3}
 								navigation
 							>
-								{imagesSRC.map((src) => {
+								{imagesSRC.map((src, index) => {
 									return (
 										<SwiperSlide key={src}>
 											<img
+												onClick={() => {
+													setOpenModal(true)
+													setPhotoIndex(index)
+												}}
 												className="obraIndividual__slider__img"
 												src={src}
 												alt="Item"
@@ -83,6 +92,28 @@ const Post = (data, error) => {
 									)
 								})}
 							</Swiper>
+							{openModal && (
+								<Lightbox
+									mainSrc={imagesSRC[photoIndex]}
+									nextSrc={imagesSRC[(photoIndex + 1) % imagesSRC.length]}
+									prevSrc={
+										imagesSRC[
+											(photoIndex + imagesSRC.length - 1) % imagesSRC.length
+										]
+									}
+									onCloseRequest={() => {
+										setOpenModal(false)
+									}}
+									onMovePrevRequest={() =>
+										setPhotoIndex(
+											(photoIndex + imagesSRC.length - 1) % imagesSRC.length
+										)
+									}
+									onMoveNextRequest={() =>
+										setPhotoIndex((photoIndex + 1) % imagesSRC.length)
+									}
+								/>
+							)}
 						</section>
 					)}
 				</main>
