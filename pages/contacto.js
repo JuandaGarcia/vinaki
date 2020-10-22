@@ -147,7 +147,7 @@ const Contacto = () => {
 							<div className="two">
 								<input
 									type="number"
-									placeholder="Telefono"
+									placeholder="Teléfono"
 									name="phone"
 									required
 									value={formData.phone}
@@ -164,7 +164,7 @@ const Contacto = () => {
 							</div>
 							<textarea
 								name="message"
-								placeholder="Escribenos"
+								placeholder="Escríbenos"
 								value={formData.message}
 								onChange={handleChange}
 							/>

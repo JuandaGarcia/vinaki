@@ -47,7 +47,10 @@
 }
 
 .individualBlog__text img {
-	display: none;
+	max-width: 100%;
+	max-height: 50vh;
+	margin: 2em 0;
+	object-fit: cover;
 }
 
 .individualBlog__text {
@@ -149,6 +152,7 @@
 	}
 	.individualBlog__title {
 		padding: 0 2em;
+		grid-column: span 2;
 	}
 	.individualBlog__relacionados {
 		padding: 0 2em;

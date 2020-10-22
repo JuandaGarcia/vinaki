@@ -556,6 +556,15 @@
 	}
 }
 
+.view-project {
+	padding-bottom: 2px;
+	color: #f2de02;
+	text-decoration: none;
+	font-size: 20px;
+	border-bottom: 2px solid #f2de02;
+	font-family: gilroyBold;
+}
+
 @keyframes box-left {
 	from {
 		transform: translateX(100vw);

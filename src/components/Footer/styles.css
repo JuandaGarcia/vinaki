@@ -79,6 +79,14 @@ footer .divRedes .redes {
 	box-sizing: border-box;
 }
 
+.developer {
+	font-size: 0.8em !important;
+}
+
+.developer a {
+	text-decoration: underline;
+}
+
 @media screen and (max-width: 1024px) {
 	footer .divRedes p,
 	.link__email {
@@ -134,5 +142,9 @@ footer .divRedes .redes {
 	footer .divDerechos p {
 		font-size: 0.8em;
 		margin-top: 1em;
+	}
+	.developer {
+		font-size: 0.7em !important;
+		margin-top: 2em !important;
 	}
 }

@@ -134,6 +134,9 @@ const Home = () => {
 								conocía en la región, al estar ubicada en el corazón de Gigante
 								Huila.
 							</p>
+							<Link href={`/obras/post/casa-rm`}>
+								<a className="view-project">Ver proyecto completo</a>
+							</Link>
 						</div>
 					</div>
 					<div className="box-2">
@@ -176,7 +179,7 @@ const Home = () => {
 					<div id="aut">
 						<div className="autores">
 							<p>
-								Laura Victoria Andrade y Snaider Hoyos Mahecha: arquitectos
+								Snaider Hoyos Mahecha y Laura Victoria Andrade: arquitectos
 								apasionados y comprometidos en diseñar y construir hogares
 								sostenibles, llenos de elegancia y confort, y siempre, dejando
 								una huella verde en cada una de ellas.

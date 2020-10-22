@@ -33,6 +33,7 @@
 	font-family: gilroyBold;
 	left: 45px;
 	top: 30%;
+	z-index: 10;
 }
 
 .sec2-contacto {

@@ -64,7 +64,16 @@ const Footer = () => {
 				<p>3015376543 - 3606437</p>
 			</div>
 			<div className="divDerechos">
-				<p>2020, Desarrollado por 99andpartners</p>
+				<p className="developer">
+					2020, Desarrollado por{' '}
+					<a
+						href="http://www.99andpartners.com/"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						99andpartners
+					</a>
+				</p>
 				<img src="/assets/img/footer/v.png" alt="Vinaki" />
 			</div>
 		</footer>
