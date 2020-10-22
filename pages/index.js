@@ -170,11 +170,13 @@ const Home = () => {
 						src="/assets/img/autores/autores1.JPG"
 						alt="Snaider Hoyos Mahecha"
 						loading="lazy"
+						className="izquierda"
 					/>
 					<img
 						src="/assets/img/autores/autores2.JPG"
 						alt="Laura Victoria Andrade"
 						loading="lazy"
+						className="derecha"
 					/>
 					<div id="aut">
 						<div className="autores">
