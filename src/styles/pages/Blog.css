@@ -17,6 +17,9 @@
 	font-size: 48px;
 	line-height: 40px;
 	font-weight: bold;
+	z-index: 10;
+	position: relative;
+	animation: opacity-up 1s;
 }
 
 .sec1-blog .box-2 {
@@ -38,6 +41,7 @@
 	position: absolute;
 	left: 23rem;
 	top: 120px;
+	animation: box-rigth 1s;
 }
 
 .sec1-blog .box-2 .box-y {

@@ -217,7 +217,7 @@
 .sec4 {
 	width: 85%;
 	margin: 0 auto;
-	margin-top: 60px;
+	margin-top: 1em;
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	grid-template-rows: auto auto auto;
@@ -225,7 +225,6 @@
 	justify-items: center;
 	position: relative;
 	box-sizing: border-box;
-	padding-top: 3em;
 	padding-bottom: 0;
 	margin-bottom: 6em;
 }

@@ -1,26 +1,32 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import Link from 'next/link'
+import { Context } from '../../../pages/_app'
 
 const index = () => {
-	const [data, setData] = useState([])
+	const { data, setData } = useContext(Context)
 	const [loading, setLoading] = useState(true)
 	const [error, setError] = useState(null)
 
 	useEffect(() => {
+		if (data.length) {
+			setLoading(false)
+		}
 		;(async () => {
-			try {
-				const res = await fetch(
-					`${process.env.API_URL}/wp-json/wp/v2/posts?per_page=2&_embed&categories=4&orderby=modified`
-				)
-				const parseData = await res.json()
-				if (data.code === 'rest_no_route') {
-					throw new Error({ error: '404' })
+			if (!data.length) {
+				try {
+					const res = await fetch(
+						`${process.env.API_URL}/wp-json/wp/v2/posts?per_page=2&_embed&categories=4&orderby=modified`
+					)
+					const parseData = await res.json()
+					if (parseData.code === 'rest_no_route') {
+						throw new Error({ error: '404' })
+					}
+					setData(parseData)
+					setLoading(false)
+				} catch (error) {
+					setError(error)
+					setLoading(false)
 				}
-				setData(parseData)
-				setLoading(false)
-			} catch (error) {
-				setError(error)
-				setLoading(false)
 			}
 		})()
 	}, [])
@@ -37,9 +43,7 @@ const index = () => {
 			</div>
 			<div className="proyectos">
 				{loading ? (
-					<div className="content-blog__loading">
-						Cargando datos del blog ...
-					</div>
+					<div className="content-blog__loading">Cargando datos ...</div>
 				) : (
 					<>
 						{error ? (

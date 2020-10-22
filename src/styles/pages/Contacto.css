@@ -24,6 +24,7 @@
 	position: absolute;
 	left: 14rem;
 	top: 20%;
+	animation: box-rigth 1s;
 }
 
 .sec1-contacto .box-2 h3 {
@@ -34,6 +35,7 @@
 	left: 45px;
 	top: 30%;
 	z-index: 10;
+	animation: opacity-up 1s;
 }
 
 .sec2-contacto {

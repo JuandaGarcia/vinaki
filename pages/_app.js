@@ -6,6 +6,7 @@ export const Context = createContext()
 
 function MyApp({ Component, pageProps }) {
 	const [clientLoad, setClientLoad] = useState(false)
+	const [data, setData] = useState([])
 	const isMobile = useMediaQuery({
 		query: '(max-width: 1024px)',
 	})
@@ -15,7 +16,7 @@ function MyApp({ Component, pageProps }) {
 	}, [])
 
 	return (
-		<Context.Provider value={{ clientLoad, isMobile }}>
+		<Context.Provider value={{ clientLoad, isMobile, data, setData }}>
 			<Component {...pageProps} />
 		</Context.Provider>
 	)
