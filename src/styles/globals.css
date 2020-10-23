@@ -114,6 +114,19 @@ a {
 	transform: translate(0, -50%);
 }
 
+#nprogress .bar {
+	background: #f2de02 !important;
+}
+
+#nprogress .spinner-icon {
+	border-top-color: transparent !important;
+	border-left-color: transparent !important;
+}
+
+#nprogress .peg {
+	box-shadow: 0 0 10px #f2de02, 0 0 5px #ffee30 !important;
+}
+
 @media screen and (max-width: 768px) {
 	body {
 		font-size: 4vw;

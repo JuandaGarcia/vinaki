@@ -16,7 +16,19 @@ import 'swiper/components/scrollbar/scrollbar.scss'
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y])
 
-const Home = () => {
+export async function getServerSideProps() {
+	try {
+		const res = await fetch(
+			`${process.env.API_URL}/wp-json/wp/v2/posts?per_page=2&_embed&categories=4&orderby=modified`
+		)
+		const dataObras = await res.json()
+		return { props: { dataObras } }
+	} catch (error) {
+		return { props: { errorObras: error } }
+	}
+}
+
+const Home = ({ dataObras, errorObras }) => {
 	const { isMobile, clientLoad } = useContext(Context)
 	const [dataPosts, setDataPost] = useState([])
 	const [loading, setLoading] = useState(true)
@@ -113,7 +125,7 @@ const Home = () => {
 						</div>
 					</div>
 				)}
-				<ProjectSection />
+				<ProjectSection data={dataObras} error={errorObras} />
 				<div className="sec3">
 					<div className="box-1">
 						<div className="cont">
@@ -240,24 +252,34 @@ const Home = () => {
 						<span>@vinakiarquitectos</span>
 					</a>
 					<section className="home__slider">
-						<Swiper
-							spaceBetween={isMobile ? 15 : 50}
-							slidesPerView={isMobile ? 2 : 4}
-							navigation
-						>
-							{dataInstagram.map((src) => {
-								return (
-									<SwiperSlide key={src}>
-										<img
-											loading="lazy"
-											className="home__slider__img"
-											src={src}
-											alt="Item"
-										/>
-									</SwiperSlide>
-								)
-							})}
-						</Swiper>
+						{loadingInstagram ? (
+							<p>Cargando...</p>
+						) : (
+							<>
+								{errorInstagram ? (
+									<p>Ocurrió un error al traer la información de instagram</p>
+								) : (
+									<Swiper
+										spaceBetween={isMobile ? 15 : 50}
+										slidesPerView={isMobile ? 2 : 4}
+										navigation
+									>
+										{dataInstagram.map((src) => {
+											return (
+												<SwiperSlide key={src}>
+													<img
+														loading="lazy"
+														className="home__slider__img"
+														src={src}
+														alt="Item"
+													/>
+												</SwiperSlide>
+											)
+										})}
+									</Swiper>
+								)}
+							</>
+						)}
 					</section>
 				</div>
 			</Layout>
