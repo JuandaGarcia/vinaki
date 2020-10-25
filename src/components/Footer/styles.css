@@ -8,6 +8,7 @@ footer {
 	flex-direction: row;
 	justify-content: space-between;
 	padding-bottom: 0px;
+	min-height: 20vh;
 }
 
 footer .divList {
@@ -53,6 +54,7 @@ footer .divRedes p,
 
 footer .divDerechos {
 	display: flex;
+	height: 100%;
 }
 
 footer .divDerechos p {
@@ -63,7 +65,8 @@ footer .divDerechos p {
 
 footer .divDerechos img {
 	width: 170px;
-	height: auto;
+	height: inherit;
+	object-fit: cover;
 }
 
 .footer__red {

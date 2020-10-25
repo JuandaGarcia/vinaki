@@ -69,7 +69,7 @@ const Post = (data, error) => {
 							)}
 						</picture>
 					</section>
-					{imagesSRC.length && (
+					{imagesSRC.length ? (
 						<section className="obraIndividual__slider">
 							<Swiper
 								spaceBetween={50}
@@ -115,6 +115,8 @@ const Post = (data, error) => {
 								/>
 							)}
 						</section>
+					) : (
+						''
 					)}
 				</main>
 			</Layout>

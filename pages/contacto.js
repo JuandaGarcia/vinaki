@@ -116,9 +116,20 @@ const Contacto = () => {
 											alt="Whatsapp"
 										/>
 									</a>
+									<a
+										href="mailto: arte@vinakiarquitectos.com"
+										target="_blank"
+										rel="noopener noreferrer"
+									>
+										<img
+											className="footer__red"
+											src="/assets/icons/email.svg"
+											alt="Whatsapp"
+										/>
+									</a>
 								</div>
-								<p>@vinaki.arq</p>
-								<p>+57 321 391 2131</p>
+								<p>@vinakiarquitectos</p>
+								<p>+57 318 391-2131</p>
 								<p>arte@vinakiarquitectos.com</p>
 							</div>
 							<div className="img">
