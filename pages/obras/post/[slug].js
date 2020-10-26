@@ -18,16 +18,23 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y])
 
 const Post = (data, error) => {
 	const [imagesSRC, setImagesSRC] = useState([])
+	const [videosSRC, setVideosSRC] = useState([])
 	const { isMobile, clientLoad } = useContext(Context)
 	const [openModal, setOpenModal] = useState(false)
 	const [photoIndex, setPhotoIndex] = useState(0)
 
 	useEffect(() => {
 		const images = document.querySelectorAll('.wp-block-image')
+		const videos = document.querySelectorAll('.wp-block-video')
 		let imagesSRCArray = []
+		let videosSRCArray = []
 		for (let i = 0; i < images.length; i++) {
 			imagesSRCArray.push(images[i].children[0].src)
 		}
+		for (let i = 0; i < videos.length; i++) {
+			videosSRCArray.push(videos[i].children[0].src)
+		}
+		setVideosSRC(videosSRCArray)
 		setImagesSRC(imagesSRCArray)
 	}, [])
 
@@ -76,6 +83,19 @@ const Post = (data, error) => {
 								slidesPerView={isMobile ? 1 : 3}
 								navigation
 							>
+								{videosSRC.map((src, index) => {
+									return (
+										<SwiperSlide key={src}>
+											<video
+												src={src}
+												controls
+												preload="auto"
+												className="obraIndividual__slider__img"
+												/* poster="https://admin.vinakiarquitectos.com/wp-content/uploads/2020/10/CASA-RM.jpg" */
+											></video>
+										</SwiperSlide>
+									)
+								})}
 								{imagesSRC.map((src, index) => {
 									return (
 										<SwiperSlide key={src}>
