@@ -138,7 +138,7 @@
 
 .sec2 .proyectos .caja p {
 	font-family: gilroyRegular;
-	font-size: 15px;
+	font-size: 1rem;
 }
 .sec2 .proyectos .caja .text2 {
 	margin: 15px 0px;
@@ -280,7 +280,7 @@
 
 .sec4 .autores p {
 	font-family: gilroyRegular;
-	font-size: 14px;
+	font-size: 1rem;
 	line-height: 15px;
 	margin-bottom: 10px;
 }

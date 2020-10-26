@@ -54,7 +54,7 @@
 	text-align: center;
 }
 .sec2-contacto .redes .redes {
-	width: 15%;
+	width: 7em;
 	display: flex;
 	justify-content: space-between;
 	text-align: center;
@@ -186,7 +186,7 @@
 	}
 	.sec2-contacto .redes .img img {
 		position: absolute;
-		width: 30vw;
+		width: 10vw;
 		left: -2em;
 		bottom: -5em;
 	}
@@ -212,5 +212,11 @@
 	.sec2-contacto .redes {
 		width: 100%;
 		text-align: center;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.sec2-contacto .redes .img img {
+		width: 30vw;
 	}
 }
