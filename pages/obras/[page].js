@@ -17,7 +17,7 @@ const obras = () => {
 			;(async () => {
 				try {
 					const res = await fetch(
-						`${process.env.API_URL}/wp-json/wp/v2/posts?per_page=4&_embed&page=${query.page}&categories=4`
+						`${process.env.API_URL}/wp-json/wp/v2/posts?per_page=4&_embed&page=${query.page}&categories=4&orderby=modified`
 					)
 					setErrorPosts(null)
 					setTotalPages(res.headers.get('X-WP-TotalPages'))
