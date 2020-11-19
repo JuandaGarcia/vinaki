@@ -42,7 +42,7 @@ const index = ({ data, error }) => {
 										}}
 									></div>
 									<br />
-									<Link href={`/obras/post/${project.slug}`}>
+									<Link href={`/obras/post/${project.slug.toString()}`}>
 										<a>Ver proyecto completo</a>
 									</Link>
 								</div>

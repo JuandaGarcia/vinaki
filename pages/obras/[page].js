@@ -79,7 +79,10 @@ const obras = () => {
 									<>
 										{dataPosts.map((obra) => {
 											return (
-												<Link key={obra.id} href={`/obras/post/${obra.slug}`}>
+												<Link
+													key={obra.id}
+													href={`/obras/post/${obra.slug.toString()}`}
+												>
 													<figure className="snip0015 large">
 														{obra._embedded['wp:featuredmedia'] ? (
 															<img
@@ -114,7 +117,11 @@ const obras = () => {
 									{!errorPosts && (
 										<>
 											{query.page !== '1' && (
-												<Link href={`/obras/${parseInt(query.page) - 1}`}>
+												<Link
+													href={`/obras/${(
+														parseInt(query.page) - 1
+													).toString()}`}
+												>
 													<a
 														className="media__buttons__button -black"
 														onClick={() => setLoading(true)}
@@ -124,7 +131,11 @@ const obras = () => {
 												</Link>
 											)}
 											{totalPages !== query.page && (
-												<Link href={`/obras/${parseInt(query.page) + 1}`}>
+												<Link
+													href={`/obras/${(
+														parseInt(query.page) + 1
+													).toString()}`}
+												>
 													<a
 														className="media__buttons__button -yellow"
 														onClick={() => setLoading(true)}

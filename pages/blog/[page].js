@@ -91,7 +91,11 @@ const Blog = () => {
 											{!errorPosts && (
 												<>
 													{query.page !== '1' && (
-														<Link href={`/blog/${parseInt(query.page) - 1}`}>
+														<Link
+															href={`/blog/${(
+																parseInt(query.page) - 1
+															).toString()}`}
+														>
 															<a
 																className="blogContainer__buttons__button -black"
 																onClick={() => setLoading(true)}
@@ -101,7 +105,11 @@ const Blog = () => {
 														</Link>
 													)}
 													{totalPages !== query.page && (
-														<Link href={`/blog/${parseInt(query.page) + 1}`}>
+														<Link
+															href={`/blog/${(
+																parseInt(query.page) + 1
+															).toString()}`}
+														>
 															<a
 																className="blogContainer__buttons__button -yellow"
 																onClick={() => setLoading(true)}

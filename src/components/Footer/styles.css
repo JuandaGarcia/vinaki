@@ -141,6 +141,7 @@ footer .divRedes .redes {
 		bottom: 0;
 		right: 0;
 		width: 10vw;
+		max-height: 3em;
 	}
 	footer .divDerechos p {
 		font-size: 0.8em;

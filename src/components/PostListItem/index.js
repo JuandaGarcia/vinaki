@@ -6,7 +6,7 @@ import './style.css'
 const PostListItem = ({ post }) => {
 	const { formatDate } = usePost()
 	return (
-		<Link href={`/blog/post/${post.slug}`}>
+		<Link href={`/blog/post/${post.slug.toString()}`}>
 			<a className="blogLink">
 				<div className="blog">
 					<div className="imagen">
