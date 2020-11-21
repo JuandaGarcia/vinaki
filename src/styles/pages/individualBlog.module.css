@@ -64,6 +64,10 @@
 	column-gap: 10%;
 }
 
+.individualBlog__text p {
+	margin: 1em 0;
+}
+
 .individualBlog__error {
 	text-align: center;
 
