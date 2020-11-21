@@ -64,7 +64,8 @@
 	column-gap: 10%;
 }
 
-.individualBlog__text p {
+.individualBlog__text p,
+.individualBlog__text h2 {
 	margin: 1em 0;
 }
 
