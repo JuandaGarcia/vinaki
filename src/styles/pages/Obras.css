@@ -237,7 +237,7 @@ figure.snip0015:hover figcaption::before {
 
 @media screen and (max-width: 1024px) {
 	.media {
-		margin: 0;
+		margin: 0 auto;
 		max-width: 100%;
 	}
 	figure.large {
