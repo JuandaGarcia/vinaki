@@ -61,7 +61,7 @@ const Footer = () => {
 				<a className="link__email" href="mailto: arte@vinakiarquitectos.com">
 					arte@vinakiarquitectos.com
 				</a>
-				<p>3015376543 - 3606437</p>
+				<p>+57 318 391-2131 - (8) 8689702</p>
 			</div>
 			<div className="divDerechos">
 				<p className="developer">
