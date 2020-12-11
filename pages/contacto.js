@@ -19,6 +19,7 @@ const Contacto = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault()
+		window.fbq('track', 'Lead')
 		let myHeaders = new Headers()
 		myHeaders.append('Content-Type', 'application/x-www-form-urlencoded')
 
