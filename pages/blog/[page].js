@@ -45,7 +45,7 @@ const Blog = () => {
 		<>
 			<HeadApp title="Blog" />
 			<Layout>
-				<div>
+				<div className="blogContainerHidden">
 					<div className="sec1-blog">
 						<div className="box-1">
 							<p>BLOG</p>

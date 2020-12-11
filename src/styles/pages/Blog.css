@@ -1,3 +1,8 @@
+.blogContainerHidden {
+	max-width: 100vh;
+	overflow-x: hidden;
+}
+
 .sec1-blog {
 	display: flex;
 	flex-direction: row;
