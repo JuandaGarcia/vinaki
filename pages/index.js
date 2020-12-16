@@ -16,29 +16,38 @@ import 'swiper/components/scrollbar/scrollbar.scss'
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y])
 
-export async function getServerSideProps() {
-	try {
-		const res = await fetch(
-			`${process.env.API_URL}/wp-json/wp/v2/posts?per_page=2&_embed&categories=4&orderby=modified`
-		)
-		const dataObras = await res.json()
-		return { props: { dataObras } }
-	} catch (error) {
-		return { props: { errorObras: error } }
-	}
-}
-
-const Home = ({ dataObras, errorObras }) => {
+const Home = () => {
 	const { isMobile, clientLoad } = useContext(Context)
+
 	const [dataPosts, setDataPost] = useState([])
 	const [loading, setLoading] = useState(true)
 	const [errorPosts, setErrorPosts] = useState(null)
+
+	const [dataObras, setDataObras] = useState([])
+	const [loadingObras, setLoadingObras] = useState(true)
+	const [errorObras, setErrorObras] = useState(null)
 
 	const [dataInstagram, setDataInstagram] = useState([])
 	const [loadingInstagram, setLoadingInstagram] = useState(true)
 	const [errorInstagram, setErrorInstagram] = useState(null)
 
 	useEffect(() => {
+		;(async () => {
+			try {
+				const res = await fetch(
+					`${process.env.API_URL}/wp-json/wp/v2/posts?per_page=2&_embed&categories=4&orderby=modified`
+				)
+				const data = await res.json()
+				if (data.code === 'rest_no_route') {
+					throw new Error({ error: '404' })
+				}
+				setDataObras(data)
+				setLoadingObras(false)
+			} catch (error) {
+				setErrorObras(error)
+				setLoadingObras(false)
+			}
+		})()
 		;(async () => {
 			try {
 				const res = await fetch(
@@ -55,6 +64,7 @@ const Home = ({ dataObras, errorObras }) => {
 				setLoading(false)
 			}
 		})()
+
 		getInstagramData()
 	}, [])
 
@@ -125,7 +135,11 @@ const Home = ({ dataObras, errorObras }) => {
 						</div>
 					</div>
 				)}
-				<ProjectSection data={dataObras} error={errorObras} />
+				<ProjectSection
+					data={dataObras}
+					error={errorObras}
+					loading={loadingObras}
+				/>
 				<div className="sec3">
 					<div className="box-1">
 						<div className="cont">
